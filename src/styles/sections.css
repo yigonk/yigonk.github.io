@@ -1,24 +1,66 @@
 /* Smooth anchor scroll */
 html{scroll-behavior:smooth;}
 
-/* Hero grabber (Alime-inspired) */
-.hero{position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;margin:0 -20px 24px -20px;background:linear-gradient(180deg,var(--primary),#fff);background-size:cover;background-position:center;}
-.hero__overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.25));}
-.hero__content{position:relative;width:100%;max-width:1100px;color:#fff;padding:60px 20px;}
-.hero__h1{font-size:56px;line-height:1.05;margin:0 0 8px 0;}
-.hero__tag{font-weight:600;margin:0 0 8px 0;}
-.hero__sub{max-width:720px;margin:0 0 16px 0;opacity:.95;}
+/* Hero (full-bleed, under nav) */
+.hero{
+  position:relative;overflow:hidden;
+  min-height:120vh;                              /* gives room for bg to move */
+  margin-top:calc(-1*var(--navH));margin-bottom:24px;
+  width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+  padding-top:var(--navH);
+  display:flex;align-items:center;
+}
+
+/* Actual image layer we move */
+.hero__bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  transform:translate3d(0,var(--pY,0px),0);      /* parallax offset */
+  will-change:transform;
+  /* a touch of overscale prevents edges showing when translated */
+  scale:1.06;
+  z-index:0;
+}
+
+.hero__overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.30) 30%,rgba(0,0,0,.15) 60%,rgba(0,0,0,0) 100%);
+  z-index:1;
+}
+.hero__sides{position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.45) 0,rgba(0,0,0,0) 120px),
+    linear-gradient(270deg,rgba(0,0,0,.45) 0,rgba(0,0,0,0) 120px);
+    z-index:1;
+}
+
+/* Text stays pinned; confined to site width */
+.hero__content{
+  position:sticky;top:calc(var(--navH) + var(--heroTop,16px));
+  width:auto;max-width:var(--max);margin:0 auto;
+  display:flex;flex-direction:column;color:#fff;padding:60px 20px;
+  z-index:2;
+}
+
+/* Choose ONE alignment on the <section> class list */
+.hero--left .hero__content{align-items:flex-start;text-align:left;}
+
+/* Type */
+.hero__h1{font-size:var(--heroTitle,80px);line-height:1.08;margin:0 0 8px 0;}
+.hero__tag{font-weight:400;margin:0 0 8px 0;}
+.hero__sub{max-width:400;margin:0 0 16px 0;opacity:.95;}
 .hero__actions{display:flex;gap:10px;flex-wrap:wrap;}
+@media (max-width:720px){.hero__h1{font-size:48px;}}
 
 /* Sections */
-.section{max-width:1100px;margin:0 auto;padding:32px 0;}
+.section{max-width:var(--max);margin:0 auto;padding:32px 0;}
 .section h2{margin:0 0 12px 0}
 
 /* Projects grid */
 .projects-grid{display:grid;gap:16px;}
 @media(min-width:720px){.projects-grid{grid-template-columns:repeat(3,1fr);}}
 
-/* Project cards */
+/* Cards */
 .card{background:#fff;border:1px solid rgba(15,23,42,.06);border-radius:16px;box-shadow:0 10px 24px rgba(15,23,42,.08);}
 .proj-card{position:relative;overflow:hidden;}
 .proj-card__body{padding:14px;}
@@ -27,9 +69,9 @@ html{scroll-behavior:smooth;}
 
 /* Timeline */
 .timeline{position:relative;margin-top:8px;padding-left:22px;}
-.timeline:before{content:\"\";position:absolute;left:9px;top:0;bottom:0;width:2px;background:rgba(15,23,42,.12);}
+.timeline:before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:rgba(15,23,42,.12);}
 .timeline-item{position:relative;margin:0 0 18px 0;}
-.timeline-item:before{content:\"\";position:absolute;left:-1px;top:6px;width:12px;height:12px;border-radius:999px;background:var(--accent);}
+.timeline-item:before{content:"";position:absolute;left:-1px;top:6px;width:12px;height:12px;border-radius:999px;background:var(--accent);}
 .timeline-item__card{padding:12px 14px;border-radius:16px;background:#fff;border:1px solid rgba(15,23,42,.06);box-shadow:0 10px 24px rgba(15,23,42,.08);}
 .timeline-item__title{margin:0 0 4px 0;font-weight:700;}
 .timeline-item__meta{margin:0 0 8px 0;color:var(--muted);font-size:14px;}
@@ -38,3 +80,60 @@ html{scroll-behavior:smooth;}
 .form{display:grid;gap:12px;max-width:680px;}
 .input,.textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(15,23,42,.12);}
 .textarea{min-height:140px;resize:vertical;}
+
+/* === HERO TITLE GRADIENT === */
+.text-gradient{
+  /* adjustable gradient colors + placement */
+  --gradFrom:#8caff9;       /* light blue */
+  --gradMid:#c4dffc;        /* your accent blue */
+  --gradTo:#ffffff;         /* pale blue */
+  --gradY:50%;              /* vertical position of gradient (0–100%) */
+  --gradScale:100%;         /* vertical scale of gradient (e.g., 120%) */
+
+  background-image:linear-gradient(180deg,var(--gradFrom),var(--gradMid),var(--gradTo));
+  background-size:100% var(--gradScale);
+  background-position:50% var(--gradY);
+  color:#fff; /* fallback */
+}
+
+/* Clip + stroke for crisp edges */
+@supports (-webkit-background-clip:text) or (background-clip:text){
+  .text-gradient{
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    /* subtle edge to avoid punch-through look */
+    -webkit-text-stroke:.6px rgba(0,0,0,.10);
+    text-shadow:none;
+  }
+}
+
+/* === HERO TITLE SPACING === */
+.hero__title{padding:1px 0; line-height:1.08;}
+.hero__title .line{display:block;}
+.hero__title .line+.line{margin-top:var(--titleGap,8px);}
+
+/* Tagline now uses the thinner style that used to be hero_sub */
+.hero__sub{
+  font-weight:400;                 /* thinner */
+  font-size:var(--heroSub,18px);
+  line-height:1.4;
+  max-width:var(--tagWidth,60ch);  /* width knob so it wraps to ~2 lines */
+  margin:var(--titleToTag,14px) 0 0 0;
+  opacity:.95;
+}
+
+/* Fallback (works everywhere via the legacy WebKit hack) */
+.clamp-2{
+  overflow:hidden;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+}
+
+/* Prefer the standard property when supported */
+@supports (line-clamp: 2){
+  .clamp-2{
+    display:block;          /* no need for -webkit-box */
+    line-clamp:2;           /* standard */
+  }
+}
