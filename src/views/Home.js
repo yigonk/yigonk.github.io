@@ -7,13 +7,13 @@ import Contact from "./Contact";
 
 const Home=()=> {
   return (
-    <>
+    <main>
       <Hero/>
       <About/>
       <Projects/>
       <Experience/>
       <Contact/>
-    </>
+    </main>
   );
 };
 
