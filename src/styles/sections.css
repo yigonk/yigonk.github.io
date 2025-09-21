@@ -171,9 +171,18 @@ html{scroll-behavior:smooth;}
 
 .about__p span[aria-hidden="true"]{font-size:.95em;line-height:1;transform:translateY(1px);}
 
-/* ===== Projects: wide rectangle cards ===== */
-.projects__list{display:grid;gap:16px;}
-@media(min-width:1200px){.projects__list{grid-template-columns:1fr;}}
+/* === Projects (canonical) === */
+.projects__list{
+  display:grid;
+  gap:16px;
+  grid-template-columns:repeat(1,minmax(0,1fr));  /* mobile */
+}
+@media(min-width:720px){
+  .projects__list{grid-template-columns:repeat(2,minmax(0,1fr));}  /* tablet */
+}
+@media(min-width:1200px){
+  .projects__list{grid-template-columns:repeat(3,minmax(0,1fr));}  /* desktop */
+}
 
 .proj-card{
   position:relative;display:block;width:100%;
@@ -182,21 +191,20 @@ html{scroll-behavior:smooth;}
   text-align:left;-webkit-tap-highlight-color:transparent;
 }
 
-/* Primary sizing via aspect-ratio */
+/* Ratio: 21:9 by default; switch to 16:9 at ≥1200px (3-up) */
 .proj-card--wide{aspect-ratio:21/9;}
-@media(max-width:720px){.proj-card--wide{aspect-ratio:16/9;}}
+@media(min-width:1200px){.proj-card--wide{aspect-ratio:16/9;}}
 
-/* Fallback sizing for older engines that ignore aspect-ratio */
-.proj-card--wide::before{
-  content:"";display:block;padding-top:42.857%; /* 21/9 = 0.42857 */
-}
-@media(max-width:720px){
-  .proj-card--wide::before{padding-top:56.25%;} /* 16/9 */
+/* Fallback ONLY when aspect-ratio isn't supported */
+@supports not (aspect-ratio:1/1){
+  .proj-card--wide::before{content:"";display:block;padding-top:42.857%;} /* 9/21 */
+  @media(min-width:1200px){
+    .proj-card--wide::before{content:"";display:block;padding-top:56.25%;} /* 9/16 */
+  }
 }
 
 .proj-card__img{
-  position:absolute;inset:0;
-  background-size:cover;background-position:center;
+  position:absolute;inset:0;background-size:cover;background-position:center;
   transform:scale(1.02);transition:transform .25s ease-out;will-change:transform;
 }
 .proj-card:hover .proj-card__img{transform:scale(1.06);}
@@ -207,25 +215,14 @@ html{scroll-behavior:smooth;}
 }
 .proj-card__title{font-weight:800;letter-spacing:.2px;}
 
+/* Hover overlay */
 .proj-card__hover{
-  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:8px;color:#fff;background:rgba(0,0,0,.55);opacity:0;transition:opacity .2s;
-  text-align:center;padding:12px;
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:12px;color:#fff;opacity:0;transition:opacity .18s ease-out;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(1.5px);
 }
-.proj-card:hover .proj-card__hover{opacity:1;}
-.proj-card__kw{font-size:15px;opacity:.95;}
-.proj-card__cta{font-size:13px;opacity:.9;border:1px solid rgba(255,255,255,.6);padding:6px 10px;border-radius:999px;}
+.proj-card:hover .proj-card__hover,
+.proj-card:focus-visible .proj-card__hover{opacity:1;}
 
-/* ===== Modal ===== */
-.modal{position:fixed;inset:0;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;padding:20px;z-index:60;}
-.modal__panel{position:relative;width:min(860px,100%);background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(15,23,42,.35);}
-.modal__close{
-  position:absolute;top:8px;right:10px;border:0;background:transparent;cursor:pointer;
-  font-size:28px;line-height:1;padding:6px 8px;color:#111;-webkit-tap-highlight-color:transparent;
-}
-.modal__media{aspect-ratio:16/9;background-size:cover;background-position:center;}
-.modal__body{padding:14px 16px 18px 16px;}
-.modal__title{margin:0 0 6px 0;font-size:22px;}
-.modal__tags{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px 0;}
-.tag{font-size:12px;padding:4px 8px;border:1px solid rgba(15,23,42,.12);border-radius:999px;background:#f7fafc;}
-.modal__desc{margin:0;color:#0f172a;}
+.proj-card__kw{font-size:15px;line-height:1.35;letter-spacing:.2px;opacity:.98;}
+

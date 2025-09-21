@@ -1,26 +1,31 @@
 import React from "react";
 
+const ITEMS=[
+  {id:"cansat",title:"CANSAT Parachute Mechanism",cover:"https://picsum.photos/1200/520?random=11",keywords:["mechanism","CAD","prototype"]},
+  {id:"scramjet",title:"Scramjet CFD Optimization",cover:"https://picsum.photos/1200/520?random=12",keywords:["CFD","aero","optimization"]},
+  {id:"iesve",title:"Energy Modeling Training Manual",cover:"https://picsum.photos/1200/520?random=13",keywords:["IES VE","BIM","workflow"]},
+  {id:"uav",title:"UAV Design & Manufacturing",cover:"https://picsum.photos/1200/520?random=14",keywords:["UAV","FEA","manufacturing"]},
+  {id:"sensor",title:"Hydrogen & Methane Sensor System",cover:"https://picsum.photos/1200/520?random=15",keywords:["sensors","data","IP"]}
+];
+
 const Projects=()=> {
-  const items=[
-    {title:"CANSAT Parachute Mechanism",sub:"Hands-on satellite design"},
-    {title:"Scramjet CFD Optimization",sub:"High-speed aerodynamics"},
-    {title:"Energy Modeling Manual (IES VE)",sub:"Digital transition"},
-    {title:"SUAV: UAV Design & Manufacturing",sub:"Competition project"},
-    {title:"Hydrogen & Methane Sensor System",sub:"Prototype & IP"}
-  ];
   return (
-    <section id="projects" className="section">
+    <section id="projects" className="section projects">
       <h2>Projects</h2>
-      <div className="projects-grid">
-        {items.map((p,i)=> {
+      <div className="projects__list">
+        {ITEMS.map((it)=> {
           return (
-            <article key={i} className="proj-card card">
-              <div className="proj-card__hover"><div>{p.sub}</div></div>
-              <div className="proj-card__body">
-                <h3 style={{margin:"0 0 4px 0"}}>{p.title}</h3>
-                <div style={{color:"var(--muted)",fontSize:14}}>{p.sub}</div>
+            <button key={it.id} type="button" className="proj-card proj-card--wide" aria-label={`${it.title} tile`}>
+              <div className="proj-card__img" style={{backgroundImage:`url(${it.cover}),linear-gradient(135deg,#e8eefc,#dceeff)`}}/>
+              <div className="proj-card__label">
+                <div className="proj-card__title">{it.title}</div>
               </div>
-            </article>
+
+              {/* Hover keywords */}
+              <div className="proj-card__hover">
+                <div className="proj-card__kw">{it.keywords.join(" • ")}</div>
+              </div>
+            </button>
           );
         })}
       </div>
