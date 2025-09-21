@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {Routes,Route} from "react-router-dom";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+import ScrollToHash from "./components/ScrollToHash";
+import Home from "./views/Home";
+import Photo from "./views/Photo";
 
-function App() {
+const App=()=> {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar/>
+      <main id="main" style={{maxWidth:"1100px",margin:"0 auto",padding:"0 20px"}}>
+        <ScrollToHash/>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/photo" element={<Photo/>}/>
+          <Route path="*" element={<Home/>}/>
+        </Routes>
+      </main>
+      <Footer/>
+    </>
   );
-}
+};
 
 export default App;
