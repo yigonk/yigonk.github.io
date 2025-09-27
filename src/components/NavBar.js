@@ -61,28 +61,66 @@ const NavBar = () => {
       return;
     }
 
-    const hero = document.getElementById("home");
-    if (!hero) {
-      setHidden(false);
-      return;
-    }
+    let cleanup = () => {};
+    let observer;
 
-    const updateHidden = () => {
-      const rect = hero.getBoundingClientRect();
-      const navHeight = getNavHeight();
-      setHidden(rect.bottom <= navHeight);
+    const attachToHero = (heroEl) => {
+      const updateHidden = () => {
+        const rect = heroEl.getBoundingClientRect();
+        const navHeight = getNavHeight();
+        setHidden(rect.bottom <= navHeight);
+      };
+
+      updateHidden();
+      window.addEventListener("scroll", updateHidden, { passive: true });
+      window.addEventListener("resize", updateHidden);
+
+      cleanup = () => {
+        window.removeEventListener("scroll", updateHidden);
+        window.removeEventListener("resize", updateHidden);
+      };
     };
 
-    updateHidden();
-    window.addEventListener("scroll", updateHidden, { passive: true });
-    window.addEventListener("resize", updateHidden);
+    const tryAttach = () => {
+      const hero = document.getElementById("home");
+      if (!hero) {
+        return false;
+      }
+      attachToHero(hero);
+      return true;
+    };
+
+    if (!tryAttach()) {
+      observer = new MutationObserver(() => {
+        if (tryAttach()) {
+          observer.disconnect();
+        }
+      });
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
     return () => {
-      window.removeEventListener("scroll", updateHidden);
-      window.removeEventListener("resize", updateHidden);
+      cleanup();
+      if (observer) {
+        observer.disconnect();
+      }
     };
   }, [pathname]);
 
   const close = () => setMenuOpen(false);
+
+  const handleBrandClick = (event) => {
+    close();
+    if (typeof window === "undefined") return;
+
+    if (pathname === "/" && window.location.hash === "#home") {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <header
@@ -93,7 +131,7 @@ const NavBar = () => {
       <div className="nav__wrap">
         {/* Left: brand */}
         <div className="nav__brand">
-          <Link to="/" onClick={close}>
+          <Link to={{ pathname: "/", hash: "#home" }} onClick={handleBrandClick}>
             Yigon Kim
           </Link>
         </div>
