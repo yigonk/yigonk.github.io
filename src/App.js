@@ -7,8 +7,8 @@ import Home from "./views/Home";
 import Photo from "./views/Photo";
 import PageLoader from "./components/PageLoader";
 
-const EXIT_DURATION = 320;
-const ENTER_DURATION = 640;
+const EXIT_DURATION = 240;
+const ENTER_DURATION = 420;
 
 const App = () => {
   const location = useLocation();
@@ -68,7 +68,7 @@ const App = () => {
 
   useEffect(() => {
     if (loaderState !== "leaving") return undefined;
-    const timeout = window.setTimeout(() => setLoaderState("hidden"), 320);
+    const timeout = window.setTimeout(() => setLoaderState("hidden"), 220);
     return () => window.clearTimeout(timeout);
   }, [loaderState]);
 

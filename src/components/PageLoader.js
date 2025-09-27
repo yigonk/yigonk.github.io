@@ -4,6 +4,7 @@ const PageLoader = ({ state }) => {
   const className = `page-loader${
     state === "leaving" ? " page-loader--leaving" : ""
   }`;
+
   return (
     <div
       className={className}
@@ -12,10 +13,7 @@ const PageLoader = ({ state }) => {
       aria-busy={state !== "hidden"}
       aria-label="Loading home"
     >
-      <div className="page-loader__inner">
-        <div className="page-loader__spinner" aria-hidden="true" />
-        <p className="page-loader__text">Preparing the portfolio…</p>
-      </div>
+      <div className="page-loader__spinner" aria-hidden="true" />
     </div>
   );
 };
