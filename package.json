@@ -1,5 +1,6 @@
 {
   "name": "yigonportfolioweb",
+  "homepage": "https://yigonk.github.io/portfolio-website-with-AI-project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

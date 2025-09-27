@@ -10,7 +10,16 @@ const NavBar = () => {
   const [solid, setSolid] = useState(false);
   const [hidden, setHidden] = useState(false);
 
-  const isPhoto = pathname.startsWith("/photo");
+  const normalizePath = (path) => {
+    if (!path) return "/";
+    const trimmed = path.replace(/\/+$/, "");
+    if (!trimmed) return "/";
+    return trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  };
+
+  const currentPath = normalizePath(pathname);
+  const isHome = currentPath === "/" || currentPath === "/index.html";
+  const isPhoto = currentPath.startsWith("/photo");
 
   const getNavHeight = () => {
     const v = getComputedStyle(document.documentElement)
@@ -23,18 +32,18 @@ const NavBar = () => {
   // Glass state: black-transparent over hero, light glass after scroll
   useEffect(() => {
     const onScroll = () => {
-      const onHome = pathname === "/";
+      const onHome = isHome;
       const atTop = window.scrollY < 80;
       setSolid(!(onHome && atTop));
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname]);
+  }, [isHome]);
 
   // Scroll spy (home only)
   useEffect(() => {
-    if (pathname !== "/") {
+    if (!isHome) {
       setActive("");
       return;
     }
@@ -52,11 +61,11 @@ const NavBar = () => {
     );
     els.forEach((el) => obs.observe(el));
     return () => obs.disconnect();
-  }, [pathname]);
+  }, [isHome]);
 
   // Hide nav once hero is scrolled past
   useEffect(() => {
-    if (pathname !== "/") {
+    if (!isHome) {
       setHidden(false);
       return;
     }
@@ -80,7 +89,7 @@ const NavBar = () => {
       window.removeEventListener("scroll", updateHidden);
       window.removeEventListener("resize", updateHidden);
     };
-  }, [pathname]);
+  }, [isHome]);
 
   const close = () => setMenuOpen(false);
 
