@@ -71,3 +71,106 @@
 @media (min-width:861px){
   .nav__toggle{display:none !important;} /* hide hamburger on desktop */
 }
+
+/* === Force dark navbar on /photo === */
+.nav.nav--dark{
+  background:rgba(11,18,32,.85) !important;       /* dark glass */
+  color:#e6eefc;
+  box-shadow:0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter:saturate(120%) blur(10px);
+}
+
+/* If scroll adds nav--glass or nav--clear, stay dark */
+.nav.nav--dark.nav--glass,
+.nav.nav--dark.nav--clear{
+  background:rgba(11,18,32,.85) !important;
+  box-shadow:0 1px 0 rgba(255,255,255,.06);
+}
+
+/* Links + brand in dark navbar */
+.nav.nav--dark .nav__brand a,
+.nav.nav--dark .nav__link{ color:#e6eefc; }
+
+/* Two-line hamburger visible & white in dark navbar */
+.nav.nav--dark .nav__toggle{ display:flex; }
+.nav.nav--dark .nav__toggle span{ background:#fff; }
+
+/* Keep dropdown white (as requested) even on dark page */
+.nav__dropdown{ background:#ffffff; color:#0f172a; }
+
+/* On photo: hide center links & the 'Photo' link; always show toggle */
+.nav.nav--compact .nav__center,
+.nav.nav--compact .nav__photo{ display:none !important; }
+.nav.nav--showToggle .nav__toggle{ display:flex !important; }
+
+/* === FORCE WHITE DROPDOWN (everywhere, incl. /photo) === */
+.nav__dropdown{
+  position: fixed;                  /* detach from header; span full width */
+  top: var(--navH);
+  left: 0;
+  right: 0;
+  background:#ffffff !important;    /* white panel as requested */
+  color:#0f172a !important;         /* dark text inside */
+  border-bottom:1px solid rgba(15,23,42,.08);
+  box-shadow:0 12px 24px rgba(15,23,42,.18);
+  transform: translateY(-10px);
+  opacity:0;
+  pointer-events:none;
+  transition: transform .18s ease, opacity .18s ease;
+  z-index: 70;                      /* above the page & just under the nav */
+}
+
+.nav__dropdown--open{
+  transform: translateY(0);
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* Dropdown items */
+.nav__dlink{
+  display:block;
+  padding:14px 20px;
+  color:#0f172a !important;
+}
+.nav__dlink:hover{ background:rgba(15,23,42,.04); }
+
+/* Keep it white even with dark navbar */
+.nav.nav--dark .nav__dropdown{ background:#fff !important; color:#0f172a !important; }
+
+/* If you don't already have this */
+.nav{ position:fixed; top:0; left:0; right:0; z-index: 80; }
+
+/* Ensure header is above everything */
+.nav{ position:fixed; top:0; left:0; right:0; z-index:80; }
+
+/* Force white dropdown on open, completely invisible when closed */
+.nav__dropdown{
+  position:fixed;
+  top:var(--navH);
+  left:0; right:0;
+  background:#fff;
+  color:#0f172a;
+  transform:translateY(-10px);
+  opacity:0;
+  pointer-events:none;
+  /* when CLOSED, no border so you don't see a line */
+  border-bottom:0;
+  box-shadow:none;
+  transition:transform .18s ease, opacity .18s ease;
+  z-index:70;
+}
+.nav__dropdown--open{
+  transform:translateY(0);
+  opacity:1;
+  pointer-events:auto;
+  border-bottom:1px solid rgba(15,23,42,.08);
+  box-shadow:0 12px 24px rgba(15,23,42,.18);
+}
+
+/* Dropdown links */
+.nav__dlink{display:block;padding:14px 20px;color:#0f172a;}
+.nav__dlink:hover{background:rgba(15,23,42,.04);}
+
+/* Keep toggle visible & white on dark nav (photo page) */
+.nav--dark .nav__toggle span{ background:#fff; }
+.nav--showToggle .nav__toggle{ display:flex; }   /* show hamburger on desktop for /photo */

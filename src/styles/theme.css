@@ -10,8 +10,6 @@
   --radius:16px;
   --shadow:0 10px 24px rgba(15,23,42,.08);
   --navH:50px;
-  /* uncomment if you want to keep body using --text */
-  /* --text: var(--ink); */
 }
 
 *{box-sizing:border-box;}

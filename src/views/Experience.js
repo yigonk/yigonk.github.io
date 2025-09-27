@@ -1,4 +1,11 @@
 import React,{useState} from "react";
+import logoStantec from "../assets/images/logos/stantec.jpg";
+import logoAKCSE from "../assets/images/logos/akcse.jpeg";
+import logoMedal from "../assets/images/logos/medal.jpg";
+import logoSUAV from "../assets/images/logos/suav.jpg";
+
+const LOGOS={stantec:logoStantec,akcse:logoAKCSE,medal:logoMedal,suav:logoSUAV};
+
 
 const ITEMS=[
   {id:"stantec",label:"Stantec",title:"Mechanical Engineering Intern",org:"Stantec",date:"May 2024 – May 2025",location:"Calgary, AB",
@@ -19,7 +26,12 @@ const Experience=()=> {
   const [sel,setSel]=useState(ITEMS[0]);
 
   return (
-    <section id="experience" className="section experience">
+    <section
+      id="experience"
+      className="section experience"
+      style={{'--railTop':'88px','--railH':'calc(100vh - 128px)','--panelMax':'50vh','--panelW':'560px'}}
+    >
+
       <h2>Experience</h2>
 
       {/* centered inner container only */}
@@ -47,16 +59,25 @@ const Experience=()=> {
 
           {/* Right panel: tall, scrollable, sticky header */}
           <article className="exp__panel" role="region" aria-label={`${sel.title} story`}>
-            <header className="exp__head">
-              <h3 className="exp__title">{sel.title} — {sel.org}</h3>
-              <div className="exp__meta">{[sel.date,sel.location].filter(Boolean).join(" • ")}</div>
-            </header>
+            <div className="exp__scroll">
+              <header className="exp__head">
+                {LOGOS[sel.id] && (
+                  <img className="exp__logo" src={LOGOS[sel.id]} alt={`${sel.org} logo`} />
+                )}
+                <div className="exp__headText">
+                  <h3 className="exp__title">{sel.title} — {sel.org}</h3>
+                  <div className="exp__meta">{[sel.date,sel.location].filter(Boolean).join(" • ")}</div>
+                </div>
+              </header>
 
-            <div className="exp__storywrap">
-              <p className="exp__story">{sel.story}</p>
-              {/* You can add more <p> blocks here for longer anecdotes */}
+
+              <div className="exp__storywrap">
+                <p className="exp__story">{sel.story}</p>
+                {/* more <p>…</p> if needed */}
+              </div>
             </div>
           </article>
+
         </div>
       </div>
     </section>
