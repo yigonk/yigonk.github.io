@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/portfolio-website-with-AI-project/static/css/main.b1dc3cd2.css",
+    "main.js": "/portfolio-website-with-AI-project/static/js/main.53e7483b.js",
+    "static/media/hero.jpg": "/portfolio-website-with-AI-project/static/media/hero.fce21de6fc3d4a7109a1.jpg",
+    "static/media/about.jpg": "/portfolio-website-with-AI-project/static/media/about.cd86a21dad5ea66d70b0.jpg",
+    "static/media/stantec.jpg": "/portfolio-website-with-AI-project/static/media/stantec.06aabae51b60f1d002bc.jpg",
+    "static/media/suav.jpg": "/portfolio-website-with-AI-project/static/media/suav.0318cadf848e27bee2cc.jpg",
+    "static/media/medal.jpg": "/portfolio-website-with-AI-project/static/media/medal.0943c60536318a054692.jpg",
+    "index.html": "/portfolio-website-with-AI-project/index.html",
+    "main.b1dc3cd2.css.map": "/portfolio-website-with-AI-project/static/css/main.b1dc3cd2.css.map",
+    "main.53e7483b.js.map": "/portfolio-website-with-AI-project/static/js/main.53e7483b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b1dc3cd2.css",
+    "static/js/main.53e7483b.js"
+  ]
+}
