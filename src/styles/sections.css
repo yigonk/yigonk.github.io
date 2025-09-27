@@ -24,15 +24,16 @@
   padding: var(--sectionGap) 0;
 }
 
-.section
-  :is(
-    h2,
-    .section__title,
-    .about__title,
-    .projects__title,
-    .experience__title,
-    .contact__title
-  ) {
+
+.section :is(
+  h2,
+  .section__title,
+  .about__title,
+  .projects__title,
+  .experience__title,
+  .contact__title
+) {
+
   margin: 0 0 var(--titleBelow);
   font-size: var(--sectionTitle);
   line-height: var(--sectionTitleLH);
@@ -44,15 +45,15 @@
     padding: var(--sectionGapMobile) 0;
   }
 
-  .section
-    :is(
-      h2,
-      .section__title,
-      .about__title,
-      .projects__title,
-      .experience__title,
-      .contact__title
-    ) {
+  .section :is(
+    h2,
+    .section__title,
+    .about__title,
+    .projects__title,
+    .experience__title,
+    .contact__title
+  ) {
+
     font-size: var(--sectionTitleMobile);
   }
 }
@@ -94,7 +95,7 @@
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.3) 30%,
+    rgba(0, 0, 0, 0.30) 30%,
     rgba(0, 0, 0, 0.15) 60%,
     rgba(0, 0, 0, 0) 100%
   );
