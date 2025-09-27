@@ -5,15 +5,15 @@ import Projects from "./Projects";
 import Experience from "./Experience";
 import Contact from "./Contact";
 
-const Home=()=> {
+const Home = () => {
   return (
-    <main>
-      <Hero/>
-      <About/>
-      <Projects/>
-      <Experience/>
-      <Contact/>
-    </main>
+    <div className="page home">
+      <Hero />
+      <About />
+      <Projects />
+      <Experience />
+      <Contact />
+    </div>
   );
 };
 

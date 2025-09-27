@@ -1,176 +1,234 @@
-/* Shell */
-.nav{position:sticky;top:0;z-index:50;transition:background .25s,border-color .25s,color .25s;}
-.nav--clear{
-  background:rgba(0,0,0,.28);
-  -webkit-backdrop-filter:saturate(180%) blur(6px);
-  backdrop-filter:saturate(180%) blur(6px);
-  border-bottom:1px solid rgba(255,255,255,.08);
-  color:#fff;
-}
-.nav--glass{
-  background:rgba(255,255,255,.7);
-  -webkit-backdrop-filter:saturate(180%) blur(12px);
-  backdrop-filter:saturate(180%) blur(12px);
-  border-bottom:1px solid rgba(15,23,42,.08);
-  color:var(--ink);
-}
+/* =============================================
+   Global navigation
+   ============================================= */
 
-/* Layout: brand (left) | center (absolute) | right (photo/hamburger) */
-.nav__wrap{
-  position:relative;
-  display:flex;align-items:center;justify-content:space-between;
-  max-width:var(--max);margin:0 auto;padding:6px 14px;min-height:var(--navH);
-}
-.nav__brand{flex:0 0 auto;font-weight:800;letter-spacing:.2px;}
-.nav__center{
-  position:absolute;left:50%;transform:translateX(-50%);
-  display:flex;gap:18px;align-items:center;
-}
-.nav__right{flex:0 0 auto;display:flex;gap:10px;align-items:center;}
-
-/* Links with underline like the ref */
-.nav__link{position:relative;padding:8px 10px;transition:color .2s;-webkit-tap-highlight-color:transparent;}
-.nav__link:after{content:"";position:absolute;left:10px;right:calc(100% - 10px);bottom:2px;height:2px;background:var(--accent);opacity:.95;transition:right .25s;}
-.nav__link:hover:after{right:10px;}
-.nav__link--active:after{right:10px;}
-/* remove click/focus box in nav only (keep keyboard outlines elsewhere) */
-.nav a:focus,.nav a:focus-visible,.nav__toggle:focus,.nav__toggle:focus-visible{outline:0 !important;box-shadow:none !important;}
-.nav--clear .nav__link,.nav--clear .nav__brand a{color:#fff;}
-
-/* Two-line hamburger (mobile only, pinned right) */
-.nav__toggle{
-  display:none;
-  width:34px;height:24px;
-  border:0;background:transparent;padding:0;cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
-}
-.nav__toggle span{
-  display:block;width:22px;height:2px;border-radius:2px;
-  background:#fff; /* default = white for the dark (clear) state */
-  transition:transform .2s,opacity .2s,background-color .25s;
-}
-.nav--clear .nav__toggle span{background:#fff;}          /* top over hero */
-.nav--glass .nav__toggle span{background:var(--ink);}     /* scrolled = black (#0f172a) */
-
-/* Mobile dropdown */
-.nav__dropdown{
-  display:none;position:absolute;top:100%;left:0;right:0;background:rgba(255,255,255,.97);
-  border-bottom:1px solid rgba(15,23,42,.08);box-shadow:var(--shadow);
-}
-.nav__dropdown--open{display:block;}
-.nav__dlink{display:block;padding:12px 16px;border-top:1px solid rgba(15,23,42,.06);color:var(--ink);}
-.nav__dlink--active{color:var(--accent);}
-
-/* Responsive */
-@media (max-width:860px){
-  .nav__center{display:none;}            /* hide center links on mobile */
-  .nav__right .nav__photo{display:none;} /* hide Photo text on mobile */
-  .nav__toggle{display:flex;}            /* show 2-line hamburger on the right */
-}
-@media (min-width:861px){
-  .nav__toggle{display:none !important;} /* hide hamburger on desktop */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 80;
+  display: block;
+  color: var(--ink);
+  transform: translateY(0);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.3s ease;
 }
 
-/* === Force dark navbar on /photo === */
-.nav.nav--dark{
-  background:rgba(11,18,32,.85) !important;       /* dark glass */
-  color:#e6eefc;
-  box-shadow:0 1px 0 rgba(255,255,255,.06);
-  backdrop-filter:saturate(120%) blur(10px);
+.nav--clear {
+  background: rgba(0, 0, 0, 0.28);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: saturate(180%) blur(6px);
+  color: #fff;
 }
 
-/* If scroll adds nav--glass or nav--clear, stay dark */
-.nav.nav--dark.nav--glass,
-.nav.nav--dark.nav--clear{
-  background:rgba(11,18,32,.85) !important;
-  box-shadow:0 1px 0 rgba(255,255,255,.06);
+.nav--glass {
+  background: rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  backdrop-filter: saturate(180%) blur(12px);
 }
 
-/* Links + brand in dark navbar */
-.nav.nav--dark .nav__brand a,
-.nav.nav--dark .nav__link{ color:#e6eefc; }
+.nav--hidden {
+  transform: translateY(calc(-100% - 16px));
+  pointer-events: none;
+}
 
-/* Two-line hamburger visible & white in dark navbar */
-.nav.nav--dark .nav__toggle{ display:flex; }
-.nav.nav--dark .nav__toggle span{ background:#fff; }
+.nav__wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 6px 14px;
+  min-height: var(--navH);
+  gap: 18px;
+}
 
-/* Keep dropdown white (as requested) even on dark page */
-.nav__dropdown{ background:#ffffff; color:#0f172a; }
+.nav__brand {
+  flex: 0 0 auto;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
 
-/* On photo: hide center links & the 'Photo' link; always show toggle */
-.nav.nav--compact .nav__center,
-.nav.nav--compact .nav__photo{ display:none !important; }
-.nav.nav--showToggle .nav__toggle{ display:flex !important; }
+.nav__brand a {
+  color: inherit;
+}
 
-/* === FORCE WHITE DROPDOWN (everywhere, incl. /photo) === */
-.nav__dropdown{
-  position: fixed;                  /* detach from header; span full width */
+.nav__center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav__right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 10px;
+  color: inherit;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: calc(100% - 10px);
+  bottom: 2px;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0.95;
+  transition: right 0.25s ease;
+}
+
+.nav__link:hover::after,
+.nav__link--active::after {
+  right: 10px;
+}
+
+.nav__link--active {
+  color: var(--accent);
+}
+
+.nav a:focus,
+.nav a:focus-visible,
+.nav__toggle:focus,
+.nav__toggle:focus-visible {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.nav__toggle {
+  display: none;
+  width: 34px;
+  height: 24px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.nav__toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    background-color 0.25s ease;
+}
+
+.nav__dropdown {
+  position: fixed;
   top: var(--navH);
   left: 0;
   right: 0;
-  background:#ffffff !important;    /* white panel as requested */
-  color:#0f172a !important;         /* dark text inside */
-  border-bottom:1px solid rgba(15,23,42,.08);
-  box-shadow:0 12px 24px rgba(15,23,42,.18);
+  background: #fff;
+  color: #0f172a;
   transform: translateY(-10px);
-  opacity:0;
-  pointer-events:none;
-  transition: transform .18s ease, opacity .18s ease;
-  z-index: 70;                      /* above the page & just under the nav */
+  opacity: 0;
+  pointer-events: none;
+  border-bottom: 0;
+  box-shadow: none;
+  transition:
+    transform 0.18s ease,
+    opacity 0.18s ease;
+  z-index: 70;
 }
 
-.nav__dropdown--open{
+.nav__dropdown--open {
   transform: translateY(0);
-  opacity:1;
-  pointer-events:auto;
+  opacity: 1;
+  pointer-events: auto;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.18);
 }
 
-/* Dropdown items */
-.nav__dlink{
-  display:block;
-  padding:14px 20px;
-  color:#0f172a !important;
-}
-.nav__dlink:hover{ background:rgba(15,23,42,.04); }
-
-/* Keep it white even with dark navbar */
-.nav.nav--dark .nav__dropdown{ background:#fff !important; color:#0f172a !important; }
-
-/* If you don't already have this */
-.nav{ position:fixed; top:0; left:0; right:0; z-index: 80; }
-
-/* Ensure header is above everything */
-.nav{ position:fixed; top:0; left:0; right:0; z-index:80; }
-
-/* Force white dropdown on open, completely invisible when closed */
-.nav__dropdown{
-  position:fixed;
-  top:var(--navH);
-  left:0; right:0;
-  background:#fff;
-  color:#0f172a;
-  transform:translateY(-10px);
-  opacity:0;
-  pointer-events:none;
-  /* when CLOSED, no border so you don't see a line */
-  border-bottom:0;
-  box-shadow:none;
-  transition:transform .18s ease, opacity .18s ease;
-  z-index:70;
-}
-.nav__dropdown--open{
-  transform:translateY(0);
-  opacity:1;
-  pointer-events:auto;
-  border-bottom:1px solid rgba(15,23,42,.08);
-  box-shadow:0 12px 24px rgba(15,23,42,.18);
+.nav__dlink {
+  display: block;
+  padding: 14px 20px;
+  color: inherit;
 }
 
-/* Dropdown links */
-.nav__dlink{display:block;padding:14px 20px;color:#0f172a;}
-.nav__dlink:hover{background:rgba(15,23,42,.04);}
+.nav__dlink:hover {
+  background: rgba(15, 23, 42, 0.04);
+}
 
-/* Keep toggle visible & white on dark nav (photo page) */
-.nav--dark .nav__toggle span{ background:#fff; }
-.nav--showToggle .nav__toggle{ display:flex; }   /* show hamburger on desktop for /photo */
+.nav__dlink--active {
+  color: var(--accent);
+}
+
+@media (max-width: 860px) {
+  .nav__center {
+    display: none;
+  }
+
+  .nav__right .nav__photo {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+}
+
+@media (min-width: 861px) {
+  .nav__toggle {
+    display: none !important;
+  }
+}
+
+.nav--compact .nav__center,
+.nav--compact .nav__photo {
+  display: none !important;
+}
+
+.nav--showToggle .nav__toggle {
+  display: flex !important;
+}
+
+.nav--dark {
+  background: rgba(11, 18, 32, 0.85) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  color: #e6eefc !important;
+  backdrop-filter: saturate(120%) blur(10px);
+}
+
+.nav--dark .nav__brand a,
+.nav--dark .nav__link {
+  color: #e6eefc;
+}
+
+.nav--dark .nav__toggle span {
+  background: #fff;
+}
+
+.nav__dropdown {
+  background: #fff !important;
+  color: #0f172a !important;
+}
