@@ -1,12 +1,6 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Photo = () => {
-  // Flip body into dark mode while this page is mounted
-  useLayoutEffect(() => {
-    document.body.classList.add("body--dark");
-    return () => document.body.classList.remove("body--dark");
-  }, []);
-
   const [ready, setReady] = useState(false);
 
   useEffect(() => {

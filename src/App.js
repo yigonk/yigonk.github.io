@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -10,11 +10,28 @@ import PageLoader from "./components/PageLoader";
 const EXIT_DURATION = 240;
 const ENTER_DURATION = 420;
 
+const DARK_ROUTES = new Set(["/photo"]);
+
 const App = () => {
   const location = useLocation();
   const [displayLocation, setDisplayLocation] = useState(location);
   const [stage, setStage] = useState("boot");
   const [loaderState, setLoaderState] = useState("visible");
+
+  useLayoutEffect(() => {
+    const displayIsDark = DARK_ROUTES.has(displayLocation.pathname);
+    const targetIsDark = DARK_ROUTES.has(location.pathname);
+    const shouldDarken = stage === "exiting" ? displayIsDark : targetIsDark;
+
+    if (shouldDarken) {
+      document.body.classList.add("body--dark");
+    } else {
+      document.body.classList.remove("body--dark");
+    }
+    return () => {
+      document.body.classList.remove("body--dark");
+    };
+  }, [stage, location.pathname, displayLocation.pathname]);
 
   useEffect(() => {
     if (stage !== "boot") {
