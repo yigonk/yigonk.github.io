@@ -8,8 +8,17 @@ const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("");
   const [solid, setSolid] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   const isPhoto = pathname.startsWith("/photo");
+
+  const getNavHeight = () => {
+    const v = getComputedStyle(document.documentElement)
+      .getPropertyValue("--navH")
+      .trim();
+    const n = parseInt(v.replace("px", ""), 10);
+    return Number.isFinite(n) ? n : 56;
+  };
 
   // Glass state: black-transparent over hero, light glass after scroll
   useEffect(() => {
@@ -29,14 +38,7 @@ const NavBar = () => {
       setActive("");
       return;
     }
-    const getNavH = () => {
-      const v = getComputedStyle(document.documentElement)
-        .getPropertyValue("--navH")
-        .trim();
-      const n = parseInt(v.replace("px", ""), 10);
-      return Number.isFinite(n) ? n : 56;
-    };
-    const topOffset = getNavH() + 1;
+    const topOffset = getNavHeight() + 1;
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -52,13 +54,41 @@ const NavBar = () => {
     return () => obs.disconnect();
   }, [pathname]);
 
+  // Hide nav once hero is scrolled past
+  useEffect(() => {
+    if (pathname !== "/") {
+      setHidden(false);
+      return;
+    }
+
+    const hero = document.getElementById("home");
+    if (!hero) {
+      setHidden(false);
+      return;
+    }
+
+    const updateHidden = () => {
+      const rect = hero.getBoundingClientRect();
+      const navHeight = getNavHeight();
+      setHidden(rect.bottom <= navHeight);
+    };
+
+    updateHidden();
+    window.addEventListener("scroll", updateHidden, { passive: true });
+    window.addEventListener("resize", updateHidden);
+    return () => {
+      window.removeEventListener("scroll", updateHidden);
+      window.removeEventListener("resize", updateHidden);
+    };
+  }, [pathname]);
+
   const close = () => setMenuOpen(false);
 
   return (
     <header
       className={`nav ${solid ? "nav--glass" : "nav--clear"} ${
         isPhoto ? "nav--dark nav--compact nav--showToggle" : ""
-      }`}
+      }${hidden ? " nav--hidden" : ""}`}
     >
       <div className="nav__wrap">
         {/* Left: brand */}
