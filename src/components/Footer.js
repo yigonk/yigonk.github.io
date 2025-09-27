@@ -1,10 +1,10 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-const Footer = () => {
+const Footer = ({ forceDark = false }) => {
   const year = new Date().getFullYear();
   const { pathname } = useLocation();
-  const isPhoto = pathname.startsWith("/photo");
+  const isPhoto = forceDark || pathname.startsWith("/photo");
 
   return (
     <footer className={`footer${isPhoto ? " footer--dark" : ""}`}>

@@ -33,17 +33,25 @@ const App = () => {
     }
   }, [stage, displayLocation.pathname]);
 
-  useLayoutEffect(() => {
-    const displayIsDark = DARK_ROUTES.has(displayLocation.pathname);
-    const targetIsDark = DARK_ROUTES.has(location.pathname);
-    const shouldDarken =
-      stage === "exiting"
-        ? displayIsDark || targetIsDark
-        : stage === "entering"
-        ? targetIsDark || exitingDarkRef.current
-        : targetIsDark;
+  const displayPath = displayLocation.pathname;
+  const targetPath = location.pathname;
+  const displayIsDark = DARK_ROUTES.has(displayPath);
+  const targetIsDark = DARK_ROUTES.has(targetPath);
 
-    if (shouldDarken) {
+  const shellIsDark = (() => {
+    if (stage === "exiting") {
+      return displayIsDark || targetIsDark;
+    }
+
+    if (stage === "entering") {
+      return targetIsDark || exitingDarkRef.current;
+    }
+
+    return targetIsDark;
+  })();
+
+  useLayoutEffect(() => {
+    if (shellIsDark) {
       document.body.classList.add("body--dark");
     } else {
       document.body.classList.remove("body--dark");
@@ -51,7 +59,7 @@ const App = () => {
     return () => {
       document.body.classList.remove("body--dark");
     };
-  }, [stage, location.pathname, displayLocation.pathname]);
+  }, [shellIsDark]);
 
   useEffect(() => {
     if (stage !== "boot") {
@@ -139,7 +147,7 @@ const App = () => {
         </div>
       </main>
       {showLoader && <PageLoader state={loaderState} />}
-      <Footer />
+      <Footer forceDark={shellIsDark} />
     </>
   );
 };
