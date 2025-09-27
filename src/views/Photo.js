@@ -8,7 +8,7 @@ const Photo = () => {
   }, []);
 
   return (
-    <main className="page page--dark">
+    <div className="page page--dark">
       <section className="section">
         <h2>Photo</h2>
         <p>
@@ -16,7 +16,7 @@ const Photo = () => {
           and engineering shots.
         </p>
       </section>
-    </main>
+    </div>
   );
 };
 

@@ -1,10 +1,30 @@
-.footer{border-top:1px solid rgba(15,23,42,.06);background:#fff;}
-.footer p{margin:12px 0;color:var(--muted);font-size:14px;text-align:center;}
-
-/* Dark footer on /photo */
-.photo-dark .footer{
-  background:#0b1220 !important;
-  color:#aeb7cc !important;
-  border-top:1px solid rgba(255,255,255,.08) !important;
+.footer {
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  background: #fff;
 }
-.photo-dark .footer a{color:#c7d6ff;}
+
+.footer__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 16px 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.footer__inner p {
+  margin: 0;
+}
+
+.footer a {
+  color: inherit;
+}
+
+.footer--dark {
+  background: #0b1220;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer--dark .footer__inner {
+  color: #aeb7cc;
+}

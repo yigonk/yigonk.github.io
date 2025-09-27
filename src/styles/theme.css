@@ -1,20 +1,89 @@
-:root{
-  --bg:#f7fbff;    
-  /* --bg:#f7fbff;  winter */
-  /* --bg:#fffff7;  summer */
-  --primary:#dceeff;
-  --accent:#688FE5;
-  --ink:#0f172a;
-  --muted:#64748b;
-  --max:1100px;
-  --radius:16px;
-  --shadow:0 10px 24px rgba(15,23,42,.08);
-  --navH:50px;
+:root {
+  --bg: #f7fbff;
+  /* --bg: #fffff7;  // summer */
+  --primary: #dceeff;
+  --accent: #688fe5;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --max: 1100px;
+  --radius: 16px;
+  --shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  --navH: 50px;
 }
 
-*{box-sizing:border-box;}
-html,body,#root{height:100%;}
-html{scroll-behavior:smooth;}
-body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--ink);background:var(--bg);line-height:1.6;}
-a{text-decoration:none;color:inherit;}
-.container{max-width:var(--max);margin:0 auto;padding:24px 20px;}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.page-shell {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.page {
+  display: block;
+}
+
+.page--dark {
+  color: inherit;
+}
+
+body.body--dark {
+  --bg: #0b141f;
+  --ink: #e6eefc;
+  --muted: #a9b4c8;
+
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body.body--dark a {
+  color: inherit;
+}
+
+body.body--dark
+  .section
+  :is(
+    h2,
+    .section__title,
+    .about__title,
+    .projects__title,
+    .experience__title,
+    .contact__title
+  ) {
+  color: var(--ink);
+}
