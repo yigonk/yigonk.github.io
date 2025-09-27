@@ -43,26 +43,39 @@ const NavBar = () => {
   useEffect(() => {
     if (pathname !== "/") {
       setVisible(true);
-      return;
+      return undefined;
     }
+
     const hero = document.getElementById("home");
     if (!hero) {
       setVisible(true);
-      return;
+      return undefined;
     }
 
     const navH = readNavHeight();
+    let heroVisible = false;
+
+    const updateVisibility = () => {
+      const atTop = window.scrollY <= navH;
+      const darkMode = document.body.classList.contains("body--dark");
+      setVisible(heroVisible || atTop || darkMode);
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        const atTop = window.scrollY <= navH;
-        setVisible(entry.isIntersecting || atTop);
+        heroVisible = Boolean(entry?.isIntersecting);
+        updateVisibility();
       },
       { rootMargin: `-${navH}px 0px 0px 0px`, threshold: 0 },
     );
     observer.observe(hero);
 
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+
     return () => {
       observer.disconnect();
+      window.removeEventListener("scroll", updateVisibility);
     };
   }, [pathname]);
 
