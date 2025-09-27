@@ -1,4 +1,10 @@
-import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -17,6 +23,15 @@ const App = () => {
   const [displayLocation, setDisplayLocation] = useState(location);
   const [stage, setStage] = useState("boot");
   const [loaderState, setLoaderState] = useState("visible");
+  const exitingDarkRef = useRef(false);
+
+  useEffect(() => {
+    if (stage === "exiting") {
+      exitingDarkRef.current = DARK_ROUTES.has(displayLocation.pathname);
+    } else if (stage === "idle") {
+      exitingDarkRef.current = false;
+    }
+  }, [stage, displayLocation.pathname]);
 
   useLayoutEffect(() => {
     const displayIsDark = DARK_ROUTES.has(displayLocation.pathname);
@@ -24,6 +39,8 @@ const App = () => {
     const shouldDarken =
       stage === "exiting"
         ? displayIsDark || targetIsDark
+        : stage === "entering"
+        ? targetIsDark || exitingDarkRef.current
         : targetIsDark;
 
     if (shouldDarken) {
