@@ -24,6 +24,7 @@
   padding: var(--sectionGap) 0;
 }
 
+
 .section :is(
   h2,
   .section__title,
@@ -32,6 +33,7 @@
   .experience__title,
   .contact__title
 ) {
+
   margin: 0 0 var(--titleBelow);
   font-size: var(--sectionTitle);
   line-height: var(--sectionTitleLH);
@@ -51,6 +53,7 @@
     .experience__title,
     .contact__title
   ) {
+
     font-size: var(--sectionTitleMobile);
   }
 }
@@ -177,7 +180,12 @@
   --gradY: 50%;
   --gradScale: 100%;
 
-  background-image: linear-gradient(180deg, var(--gradFrom), var(--gradMid), var(--gradTo));
+  background-image: linear-gradient(
+    180deg,
+    var(--gradFrom),
+    var(--gradMid),
+    var(--gradTo)
+  );
   background-size: 100% var(--gradScale);
   background-position: 50% var(--gradY);
   color: #fff;
@@ -574,7 +582,10 @@
   border: 2px solid rgba(15, 23, 42, 0.35);
   background: #fff;
   cursor: pointer;
-  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -805,64 +816,4 @@
 
 .btn:active {
   transform: translateY(1px);
-}
-
-/* =============================================
-   Nav tweaks + route-specific dark theme
-   ============================================= */
-.nav--compact .nav__center {
-  display: none;
-}
-
-.nav--compact .nav__dropdown {
-  position: fixed;
-  inset: var(--navH) 0 0 0;
-  display: none;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
-  z-index: 50;
-}
-
-.nav--compact .nav__dropdown.nav__dropdown--open {
-  display: block;
-}
-
-.nav--compact .nav__dropdown a {
-  display: block;
-  padding: 12px 6px;
-  font-size: 18px;
-  color: #e7ecf7;
-}
-
-.nav--dark {
-  background: rgba(0, 0, 0, 0.35);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: saturate(1.1) blur(10px);
-}
-
-.nav--dark .nav__brand a,
-.nav--dark .nav__link {
-  color: #e7ecf7;
-}
-
-.nav--dark .nav__toggle span {
-  background: #e7ecf7;
-}
-
-body.body--dark {
-  --bg: #0b141f;
-  --ink: #e6eefc;
-  --muted: #a9b4c8;
-
-  background: var(--bg);
-  color: var(--ink);
-}
-
-body.body--dark .section :is(h2, .section__title, .about__title, .projects__title, .experience__title, .contact__title) {
-  color: var(--ink);
-}
-
-body.body--dark a {
-  color: #e6eefc;
 }
