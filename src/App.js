@@ -1,24 +1,24 @@
 import React from "react";
-import {Routes,Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import ScrollToHash from "./components/ScrollToHash";
 import Home from "./views/Home";
 import Photo from "./views/Photo";
 
-const App=()=> {
+const App = () => {
   return (
     <>
-      <NavBar/>
-      <main id="main" style={{maxWidth:"1100px",margin:"0 auto",padding:"0 20px"}}>
-        <ScrollToHash/>
+      <NavBar />
+      <main id="main" className="page-shell">
+        <ScrollToHash />
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/photo" element={<Photo/>}/>
-          <Route path="*" element={<Home/>}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/photo" element={<Photo />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 };
