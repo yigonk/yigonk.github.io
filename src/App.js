@@ -13,8 +13,8 @@ import Home from "./views/Home";
 import Photo from "./views/Photo";
 import PageLoader from "./components/PageLoader";
 
-const EXIT_DURATION = 200;
-const ENTER_DURATION = 360;
+const EXIT_DURATION = 240;
+const ENTER_DURATION = 400;
 
 const DARK_ROUTES = new Set(["/photo"]);
 
