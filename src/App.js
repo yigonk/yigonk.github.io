@@ -7,8 +7,8 @@ import Home from "./views/Home";
 import Photo from "./views/Photo";
 import PageLoader from "./components/PageLoader";
 
-const EXIT_DURATION = 240;
-const ENTER_DURATION = 420;
+const EXIT_DURATION = 200;
+const ENTER_DURATION = 360;
 
 const DARK_ROUTES = new Set(["/photo"]);
 
@@ -21,7 +21,10 @@ const App = () => {
   useLayoutEffect(() => {
     const displayIsDark = DARK_ROUTES.has(displayLocation.pathname);
     const targetIsDark = DARK_ROUTES.has(location.pathname);
-    const shouldDarken = stage === "exiting" ? displayIsDark : targetIsDark;
+    const shouldDarken =
+      stage === "exiting"
+        ? displayIsDark || targetIsDark
+        : targetIsDark;
 
     if (shouldDarken) {
       document.body.classList.add("body--dark");
@@ -38,17 +41,21 @@ const App = () => {
       return undefined;
     }
 
+    let rafId;
+    let timeoutId;
+
     const finishBoot = () => {
       setStage("entering");
     };
 
-    if (document.readyState === "complete") {
-      const id = window.requestAnimationFrame(finishBoot);
-      return () => window.cancelAnimationFrame(id);
-    }
+    rafId = window.requestAnimationFrame(() => {
+      timeoutId = window.setTimeout(finishBoot, 140);
+    });
 
-    window.addEventListener("load", finishBoot, { once: true });
-    return () => window.removeEventListener("load", finishBoot);
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+      if (timeoutId) window.clearTimeout(timeoutId);
+    };
   }, [stage]);
 
   useEffect(() => {
@@ -85,7 +92,7 @@ const App = () => {
 
   useEffect(() => {
     if (loaderState !== "leaving") return undefined;
-    const timeout = window.setTimeout(() => setLoaderState("hidden"), 220);
+    const timeout = window.setTimeout(() => setLoaderState("hidden"), 160);
     return () => window.clearTimeout(timeout);
   }, [loaderState]);
 

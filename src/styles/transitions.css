@@ -7,7 +7,7 @@
   opacity: 0;
   transform: translateY(28px);
   transition-property: opacity, transform;
-  transition-duration: 420ms;
+  transition-duration: 360ms;
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -24,7 +24,7 @@
 }
 
 .page-shell__content--exiting {
-  transition-duration: 240ms;
+  transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -37,7 +37,7 @@
   background: #0b141f;
   z-index: 999;
   opacity: 1;
-  transition: opacity 220ms ease;
+  transition: opacity 160ms ease;
 }
 
 .page-loader--leaving {
