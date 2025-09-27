@@ -1,0 +1,111 @@
+.page-shell {
+  position: relative;
+}
+
+.page-shell__content {
+  position: relative;
+  opacity: 0;
+  transform: translateY(28px);
+  transition-property: opacity, transform;
+  transition-duration: 640ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-shell__content--idle,
+.page-shell__content--entering {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-shell__content--exiting,
+.page-shell__content--boot {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.page-shell__content--exiting {
+  transition-duration: 320ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #f7fbff 0%, #e8f2ff 100%);
+  color: var(--ink);
+  z-index: 999;
+  opacity: 1;
+  transition: opacity 320ms ease;
+}
+
+.page-loader--leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page-loader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 36px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.14);
+  backdrop-filter: blur(16px);
+}
+
+.page-loader__spinner {
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  border: 3px solid rgba(100, 148, 237, 0.25);
+  border-top-color: var(--accent);
+  animation: page-loader-spin 920ms linear infinite;
+}
+
+.page-loader__text {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@keyframes page-loader-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 540px) {
+  .page-loader__inner {
+    width: min(320px, 92vw);
+    padding: 28px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-shell__content,
+  .page-shell__content--exiting,
+  .page-loader,
+  .page-loader__spinner,
+  .photo,
+  .photo__veil,
+  .photo__content {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transform: none !important;
+  }
+
+  .page-loader__spinner {
+    animation: none;
+  }
+}

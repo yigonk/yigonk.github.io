@@ -1,0 +1,65 @@
+.photo {
+  position: relative;
+  min-height: calc(100vh - var(--navH));
+  padding-top: var(--navH);
+  overflow: hidden;
+}
+
+.photo__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(78, 116, 166, 0.4), transparent 60%),
+    radial-gradient(circle at 80% 30%, rgba(27, 44, 63, 0.55), transparent 65%),
+    linear-gradient(180deg, rgba(10, 16, 24, 0.9), rgba(10, 16, 24, 0.6));
+  opacity: 1;
+  transform: scale(1.05);
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.photo__content {
+  position: relative;
+  z-index: 1;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.photo--ready .photo__veil {
+  opacity: 0;
+  transform: scale(1);
+}
+
+.photo--ready .photo__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.photo .section {
+  padding-top: 0;
+}
+
+.photo h2 {
+  font-size: clamp(48px, 6vw, 68px);
+  margin-bottom: 24px;
+}
+
+.photo p {
+  max-width: 60ch;
+  font-size: clamp(18px, 2.4vw, 20px);
+  line-height: 1.6;
+  color: rgba(230, 238, 252, 0.92);
+}
+
+@media (max-width: 720px) {
+  .photo__content {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
