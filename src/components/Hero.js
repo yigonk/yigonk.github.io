@@ -37,16 +37,26 @@ const Hero = () => {
     };
   }, []);
 
+  const hashtags = [
+    "# Transformative leadership",
+    "# Digital integration",
+    "# Mechanical engineering",
+    "# Innovative Design",
+  ];
+
   return (
     <section
       ref={ref}
       id="home"
       className="hero hero--parallax hero--left"
       style={{
-        "--heroTop": "24px",
+        "--heroTop": "96px",
         "--heroH": "100vh",
         "--pFactor": ".22",
         "--bgBias": "48%",
+        "--heroTitle": "clamp(48px, 8vw, 88px)",
+        "--titleGap": "12px",
+        "--titleToTag": "20px",
       }}
     >
       <div
@@ -63,16 +73,18 @@ const Hero = () => {
             "--gradY": "35%",
             "--gradScale": "140%",
             "--titleGap": "8px",
-            "--heroTitle": "80px",
           }}
         >
           <span className="line">Hello</span>
           <span className="line">I&apos;m Yigon</span>
         </h1>
-        <p className="hero__sub clamp-2">
-          "Designing systems and innovations that benefit individuals and
-          communities worldwide."
-        </p>
+        <ul className="hero__hashtags" aria-label="Personal descriptors">
+          {hashtags.map((tag) => (
+            <li key={tag} className="hero__hashtag">
+              {tag}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
