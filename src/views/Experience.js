@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import logoStantec from "../assets/images/logos/stantec.jpg";
 import logoAKCSE from "../assets/images/logos/akcse.jpeg";
 import logoMedal from "../assets/images/logos/medal.jpg";
@@ -58,7 +58,70 @@ const ITEMS = [
 ];
 
 const Experience = () => {
-  const [sel, setSel] = useState(ITEMS[0]);
+  const [selIndex, setSelIndex] = useState(0);
+  const touchState = useRef({
+    startX: 0,
+    startY: 0,
+    lastX: 0,
+    lastY: 0,
+    active: false,
+  });
+
+  const sel = useMemo(() => ITEMS[selIndex], [selIndex]);
+
+  const showIndex = (nextIndex) => {
+    const count = ITEMS.length;
+    if (!count) return;
+    const normalized = (nextIndex + count) % count;
+    setSelIndex(normalized);
+  };
+
+  const showPrev = () => showIndex(selIndex - 1);
+  const showNext = () => showIndex(selIndex + 1);
+
+  const onTouchStart = (event) => {
+    if (!event.touches || event.touches.length !== 1) {
+      return;
+    }
+    const touch = event.touches[0];
+    touchState.current = {
+      startX: touch.clientX,
+      startY: touch.clientY,
+      lastX: touch.clientX,
+      lastY: touch.clientY,
+      active: true,
+    };
+  };
+
+  const onTouchMove = (event) => {
+    if (!touchState.current.active || !event.touches || event.touches.length !== 1) {
+      return;
+    }
+    const touch = event.touches[0];
+    touchState.current.lastX = touch.clientX;
+    touchState.current.lastY = touch.clientY;
+  };
+
+  const onTouchEnd = () => {
+    if (!touchState.current.active) {
+      return;
+    }
+    const { startX, startY, lastX, lastY } = touchState.current;
+    touchState.current.active = false;
+
+    const dx = lastX - startX;
+    const dy = lastY - startY;
+
+    if (Math.abs(dx) < 56 || Math.abs(dx) < Math.abs(dy) * 1.2) {
+      return;
+    }
+
+    if (dx < 0) {
+      showNext();
+    } else {
+      showPrev();
+    }
+  };
 
   return (
     <section
@@ -79,7 +142,7 @@ const Experience = () => {
           {/* Left rail */}
           <nav className="exp__rail" aria-label="Experience timeline">
             <ol className="exp__list">
-              {ITEMS.map((it) => {
+              {ITEMS.map((it, index) => {
                 const active = sel.id === it.id;
                 return (
                   <li key={it.id} className="exp__li">
@@ -87,11 +150,26 @@ const Experience = () => {
                       type="button"
                       className={`exp__dot${active ? " is-active" : ""}`}
                       onClick={() => {
-                        setSel(it);
+                        setSelIndex(index);
                       }}
+                      aria-label={`${it.label} — ${it.date}`}
                       title={`${it.label} • ${it.date}`}
                       aria-current={active ? "true" : "false"}
-                    />
+                    >
+                      {LOGOS[it.id] ? (
+                        <img
+                          src={LOGOS[it.id]}
+                          alt=""
+                          className="exp__dotImg"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <span className="exp__dotFallback" aria-hidden="true">
+                          {it.label.charAt(0)}
+                        </span>
+                      )}
+                      <span className="sr-only">{it.label}</span>
+                    </button>
                   </li>
                 );
               })}
@@ -103,7 +181,33 @@ const Experience = () => {
             className="exp__panel"
             role="region"
             aria-label={`${sel.title} story`}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+            onTouchCancel={onTouchEnd}
           >
+            <div className="exp__controls">
+              <button
+                type="button"
+                className="exp__arrow exp__arrow--prev"
+                onClick={showPrev}
+                aria-label="Previous experience"
+              >
+                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                  <path d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11l4.3 4.3a1 1 0 0 1-1.42 1.4l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.42 0z" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                className="exp__arrow exp__arrow--next"
+                onClick={showNext}
+                aria-label="Next experience"
+              >
+                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                  <path d="M9.3 18.7a1 1 0 0 1 0-1.4L13.59 13l-4.3-4.3a1 1 0 1 1 1.42-1.4l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.42 0z" />
+                </svg>
+              </button>
+            </div>
             <div className="exp__scroll">
               <header className="exp__head">
                 {LOGOS[sel.id] && (
