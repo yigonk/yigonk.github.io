@@ -38,9 +38,9 @@ const Hero = () => {
   }, []);
 
   const hashtags = [
+    "# Mechanical Engineering",
     "# Transformational leadership",
     "# Digital integration",
-    "# Mechanical engineering",
     "# Innovative Design",
   ];
 
@@ -53,10 +53,10 @@ const Hero = () => {
         "--heroTop": "140px",
         "--heroH": "100vh",
         "--pFactor": ".22",
-        "--bgBias": "48%",
+        "--bgBias": "60%",
         "--heroTitle": "clamp(48px, 8vw, 88px)",
         "--titleGap": "16px",
-        "--titleToTag": "12px",
+        "--titleToTag": "8px",
         // Adjust --heroPadX or --heroOffsetX to shift the text horizontally,
         // and tweak --heroTop to move it up or down.
         "--heroPadX": "clamp(32px, 5vw, 56px)",
