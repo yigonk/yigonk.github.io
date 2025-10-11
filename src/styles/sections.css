@@ -76,7 +76,7 @@
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center;
+  background-position: 50% var(--bgBias, 50%);
   transform: translate3d(0, var(--pY, 0px), 0);
   will-change: transform;
   scale: 1.06;

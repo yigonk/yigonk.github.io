@@ -53,7 +53,7 @@ const Hero = () => {
         "--heroTop": "140px",
         "--heroH": "100vh",
         "--pFactor": ".22",
-        "--bgBias": "48%",
+        "--bgBias": "42%",
         "--heroTitle": "clamp(48px, 8vw, 88px)",
         "--titleGap": "16px",
         "--titleToTag": "12px",
