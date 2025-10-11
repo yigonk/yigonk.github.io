@@ -670,8 +670,11 @@
 .exp__slider {
   display: none;
   gap: 8px;
-  padding: 10px 18px 18px;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  width: min(420px, 90vw);
+  margin: 12px auto 0;
+  padding: 0;
 }
 
 .exp__slideDot {
@@ -788,10 +791,8 @@
 
   .exp__slider {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 340px;
-    margin: 0 auto 6px;
+    width: min(340px, 82vw);
+    margin: 8px auto 0;
   }
 
   .exp__slideDot {

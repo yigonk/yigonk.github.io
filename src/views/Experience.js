@@ -210,22 +210,22 @@ const Experience = () => {
                 {/* more <p>…</p> if needed */}
               </div>
             </div>
-            <div className="exp__slider" role="group" aria-label="Experience slider">
-              {ITEMS.map((it, index) => {
-                const active = index === selIndex;
-                return (
-                  <button
-                    key={it.id}
-                    type="button"
-                    className={`exp__slideDot${active ? " is-active" : ""}`}
-                    onClick={() => showIndex(index)}
-                    aria-label={`Show ${it.label}`}
-                    aria-pressed={active ? "true" : "false"}
-                  />
-                );
-              })}
-            </div>
           </article>
+          <div className="exp__slider" role="group" aria-label="Experience slider">
+            {ITEMS.map((it, index) => {
+              const active = index === selIndex;
+              return (
+                <button
+                  key={it.id}
+                  type="button"
+                  className={`exp__slideDot${active ? " is-active" : ""}`}
+                  onClick={() => showIndex(index)}
+                  aria-label={`Show ${it.label}`}
+                  aria-pressed={active ? "true" : "false"}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
