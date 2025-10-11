@@ -50,7 +50,7 @@ const Hero = () => {
       id="home"
       className="hero hero--parallax hero--left"
       style={{
-        "--heroTop": "96px",
+        "--heroTop": "112px",
         "--heroH": "100vh",
         "--pFactor": ".22",
         "--bgBias": "48%",
@@ -63,7 +63,7 @@ const Hero = () => {
         "--heroPadTop": "60px",
         "--heroPadBottom": "80px",
         "--heroTextMax": "clamp(360px, 44vw, 640px)",
-        "--heroOffsetX": "0px",
+        "--heroOffsetX": "48px",
         "--heroInsetMax": "320px",
         "--heroInsetStop": "1680px",
         "--heroInsetEase": ".26",
@@ -85,8 +85,8 @@ const Hero = () => {
             "--titleGap": "8px",
           }}
         >
-          <span className="line">Hello</span>
-          <span className="line">I&apos;m Yigon</span>
+          <span className="line">Hello&nbsp;I&apos;m</span>
+          <span className="line">Yigon</span>
         </h1>
         <ul className="hero__hashtags" aria-label="Personal descriptors">
           {hashtags.map((tag) => (
