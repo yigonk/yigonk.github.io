@@ -57,6 +57,13 @@ const Hero = () => {
         "--heroTitle": "clamp(48px, 8vw, 88px)",
         "--titleGap": "12px",
         "--titleToTag": "20px",
+        // Adjust --heroPadX or --heroOffsetX to shift the text horizontally,
+        // and tweak --heroTop to move it up or down.
+        "--heroPadX": "clamp(32px, 6vw, 56px)",
+        "--heroPadTop": "60px",
+        "--heroPadBottom": "80px",
+        "--heroTextMax": "680px",
+        "--heroOffsetX": "0px",
       }}
     >
       <div

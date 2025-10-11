@@ -114,11 +114,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
-  padding: 60px clamp(32px, 6vw, 56px) 80px;
-  width: auto;
-  max-width: min(var(--max), 1200px);
-  margin: 0 auto;
+  gap: var(--heroContentGap, 12px);
+  padding: var(--heroPadTop, 60px)
+    var(--heroPadX, clamp(32px, 6vw, 56px))
+    var(--heroPadBottom, 80px);
+  width: min(100%, var(--heroTextMax, 720px));
+  margin: 0;
+  margin-left: var(--heroOffsetX, 0px);
   color: #fff;
 }
 
@@ -154,25 +156,19 @@
 .hero__hashtags {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 6px 16px;
   margin: var(--titleToTag, 18px) 0 0;
   padding: 0;
   list-style: none;
 }
 
 .hero__hashtag {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.42);
-  color: #fff;
+  display: inline-block;
+  color: #f1f5f9;
   font-size: var(--heroSub, 18px);
-  font-weight: 600;
-  letter-spacing: 0.2px;
+  font-weight: 400;
+  letter-spacing: 0.12px;
   white-space: nowrap;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
 }
 
 .hero__actions {
@@ -188,17 +184,13 @@
 
   .hero__content {
     top: calc(var(--navH) + 72px);
-    align-items: center;
-    text-align: center;
-    padding: clamp(60px, 8vw, 80px) clamp(28px, 8vw, 56px) clamp(56px, 10vw, 80px);
-  }
-
-  .hero--left .hero__content {
-    align-items: center;
+    padding: var(--heroPadTop, clamp(60px, 8vw, 80px))
+      var(--heroPadX, clamp(28px, 8vw, 56px))
+      var(--heroPadBottom, clamp(56px, 10vw, 80px));
   }
 
   .hero__hashtags {
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
@@ -209,17 +201,17 @@
 
   .hero__content {
     top: calc(var(--navH) + 64px);
-    padding: clamp(48px, 10vw, 64px) clamp(20px, 8vw, 32px) clamp(52px, 12vw, 72px);
+    padding: var(--heroPadTop, clamp(48px, 10vw, 64px))
+      var(--heroPadX, clamp(20px, 8vw, 32px))
+      var(--heroPadBottom, clamp(52px, 12vw, 72px));
   }
 
   .hero__hashtags {
-    gap: 10px;
+    gap: 6px 12px;
   }
 
   .hero__hashtag {
     font-size: 16px;
-    padding: 7px 12px;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
   }
 }
 
