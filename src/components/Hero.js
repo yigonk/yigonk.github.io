@@ -62,9 +62,11 @@ const Hero = () => {
         "--heroPadX": "clamp(32px, 6vw, 56px)",
         "--heroPadTop": "60px",
         "--heroPadBottom": "80px",
-        "--heroTextMax": "680px",
+        "--heroTextMax": "clamp(360px, 44vw, 640px)",
         "--heroOffsetX": "0px",
-        "--heroInsetMax": "280px",
+        "--heroInsetMax": "320px",
+        "--heroInsetStop": "1680px",
+        "--heroInsetEase": ".26",
       }}
     >
       <div

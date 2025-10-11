@@ -120,8 +120,10 @@
     var(--heroPadBottom, 80px);
   width: min(100%, var(--heroTextMax, 720px));
   margin: 0;
+  --heroInsetExtra: 0px;
   margin-left: calc(
-    var(--heroPadX, clamp(32px, 6vw, 56px)) + var(--heroOffsetX, 0px)
+    var(--heroPadX, clamp(32px, 6vw, 56px)) + var(--heroOffsetX, 0px) +
+      var(--heroInsetExtra)
   );
   margin-right: auto;
   color: #fff;
@@ -182,12 +184,13 @@
 
 @media (min-width: 900px) {
   .hero__content {
-    margin-left: clamp(
-      calc(
-        var(--heroPadX, clamp(32px, 6vw, 56px)) + var(--heroOffsetX, 0px)
-      ),
-      calc((9vw - 24px) + var(--heroOffsetX, 0px)),
-      calc(var(--heroInsetMax, 320px) + var(--heroOffsetX, 0px))
+    --heroLerpRange: max(
+      0px,
+      min(100vw, var(--heroInsetStop, 1640px)) - 900px
+    );
+    --heroInsetExtra: min(
+      var(--heroInsetMax, 360px),
+      calc(var(--heroLerpRange) * var(--heroInsetEase, 0.24))
     );
   }
 }
