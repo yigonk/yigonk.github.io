@@ -186,28 +186,6 @@ const Experience = () => {
             onTouchEnd={onTouchEnd}
             onTouchCancel={onTouchEnd}
           >
-            <div className="exp__controls">
-              <button
-                type="button"
-                className="exp__arrow exp__arrow--prev"
-                onClick={showPrev}
-                aria-label="Previous experience"
-              >
-                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                  <path d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11l4.3 4.3a1 1 0 0 1-1.42 1.4l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.42 0z" />
-                </svg>
-              </button>
-              <button
-                type="button"
-                className="exp__arrow exp__arrow--next"
-                onClick={showNext}
-                aria-label="Next experience"
-              >
-                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                  <path d="M9.3 18.7a1 1 0 0 1 0-1.4L13.59 13l-4.3-4.3a1 1 0 1 1 1.42-1.4l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.42 0z" />
-                </svg>
-              </button>
-            </div>
             <div className="exp__scroll">
               <header className="exp__head">
                 {LOGOS[sel.id] && (
@@ -231,6 +209,21 @@ const Experience = () => {
                 <p className="exp__story">{sel.story}</p>
                 {/* more <p>…</p> if needed */}
               </div>
+            </div>
+            <div className="exp__slider" role="group" aria-label="Experience slider">
+              {ITEMS.map((it, index) => {
+                const active = index === selIndex;
+                return (
+                  <button
+                    key={it.id}
+                    type="button"
+                    className={`exp__slideDot${active ? " is-active" : ""}`}
+                    onClick={() => showIndex(index)}
+                    aria-label={`Show ${it.label}`}
+                    aria-pressed={active ? "true" : "false"}
+                  />
+                );
+              })}
             </div>
           </article>
         </div>
