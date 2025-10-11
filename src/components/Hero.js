@@ -23,7 +23,7 @@ const Hero = () => {
         const scrolled = Math.min(Math.max(-r.top, 0), maxScroll);
 
         const css = getComputedStyle(el);
-        const f = parseFloat(css.getPropertyValue("--pFactor")) || 0.25;
+        const f = parseFloat(css.getPropertyValue("--pFactor")) || 0.3;
         el.style.setProperty("--pY", `${scrolled * f}px`);
         ticking = false;
       });
@@ -38,7 +38,7 @@ const Hero = () => {
   }, []);
 
   const hashtags = [
-    "# Transformative leadership",
+    "# Transformational leadership",
     "# Digital integration",
     "# Mechanical engineering",
     "# Innovative Design",
@@ -50,22 +50,22 @@ const Hero = () => {
       id="home"
       className="hero hero--parallax hero--left"
       style={{
-        "--heroTop": "112px",
+        "--heroTop": "140px",
         "--heroH": "100vh",
         "--pFactor": ".22",
         "--bgBias": "48%",
         "--heroTitle": "clamp(48px, 8vw, 88px)",
-        "--titleGap": "12px",
-        "--titleToTag": "20px",
+        "--titleGap": "16px",
+        "--titleToTag": "12px",
         // Adjust --heroPadX or --heroOffsetX to shift the text horizontally,
         // and tweak --heroTop to move it up or down.
-        "--heroPadX": "clamp(32px, 6vw, 56px)",
-        "--heroPadTop": "60px",
-        "--heroPadBottom": "80px",
+        "--heroPadX": "clamp(32px, 5vw, 56px)",
+        "--heroPadTop": "120px",
+        "--heroPadBottom": "0px",
         "--heroTextMax": "clamp(380px, 50vw, 720px)",
-        "--heroOffsetX": "48px",
+        "--heroOffsetX": "36px",
         "--heroInsetMax": "320px",
-        "--heroInsetStop": "1680px",
+        "--heroInsetStop": "1600px",
         "--heroInsetEase": ".26",
       }}
     >
