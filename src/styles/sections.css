@@ -120,7 +120,11 @@
     var(--heroPadBottom, 80px);
   width: min(100%, var(--heroTextMax, 720px));
   margin: 0;
-  margin-left: var(--heroOffsetX, 0px);
+  margin-left: calc(
+    clamp(56px, calc((100vw - var(--heroTextMax, 720px)) / 2), 320px) +
+    var(--heroOffsetX, 0px)
+  );
+  margin-right: auto;
   color: #fff;
 }
 
@@ -187,6 +191,8 @@
     padding: var(--heroPadTop, clamp(60px, 8vw, 80px))
       var(--heroPadX, clamp(28px, 8vw, 56px))
       var(--heroPadBottom, clamp(56px, 10vw, 80px));
+    margin-left: var(--heroOffsetX, 0px);
+    margin-right: 0;
   }
 
   .hero__hashtags {
