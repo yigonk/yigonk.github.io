@@ -64,6 +64,7 @@ const Hero = () => {
         "--heroPadBottom": "80px",
         "--heroTextMax": "680px",
         "--heroOffsetX": "0px",
+        "--heroInsetMax": "280px",
       }}
     >
       <div

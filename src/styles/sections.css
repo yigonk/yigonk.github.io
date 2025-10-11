@@ -121,8 +121,7 @@
   width: min(100%, var(--heroTextMax, 720px));
   margin: 0;
   margin-left: calc(
-    clamp(56px, calc((100vw - var(--heroTextMax, 720px)) / 2), 320px) +
-    var(--heroOffsetX, 0px)
+    var(--heroPadX, clamp(32px, 6vw, 56px)) + var(--heroOffsetX, 0px)
   );
   margin-right: auto;
   color: #fff;
@@ -181,6 +180,18 @@
   gap: 10px;
 }
 
+@media (min-width: 900px) {
+  .hero__content {
+    margin-left: clamp(
+      calc(
+        var(--heroPadX, clamp(32px, 6vw, 56px)) + var(--heroOffsetX, 0px)
+      ),
+      calc((9vw - 24px) + var(--heroOffsetX, 0px)),
+      calc(var(--heroInsetMax, 320px) + var(--heroOffsetX, 0px))
+    );
+  }
+}
+
 @media (max-width: 1200px) {
   .hero {
     min-height: 110vh;
@@ -191,8 +202,6 @@
     padding: var(--heroPadTop, clamp(60px, 8vw, 80px))
       var(--heroPadX, clamp(28px, 8vw, 56px))
       var(--heroPadBottom, clamp(56px, 10vw, 80px));
-    margin-left: var(--heroOffsetX, 0px);
-    margin-right: 0;
   }
 
   .hero__hashtags {
