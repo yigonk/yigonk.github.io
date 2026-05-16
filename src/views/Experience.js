@@ -15,12 +15,15 @@ const ITEMS = [
   {
     id: "stantec",
     label: "Stantec",
-    title: "Mechanical Engineering Intern",
+    title: "Mechanical Engineer-In-Training (EIT)",
     org: "Stantec",
-    date: "May 2024 – May 2025",
+    date: "May 2024 – May 2025, May 2026 – Present",
     location: "Calgary, AB",
-    story:
-      "I joined the buildings group and learned to design for people first—ventilation that feels right, plumbing that just works, and fire protection that quietly protects. I lived in Revit, set up families, reviewed submittals, and used IES VE to sanity-check performance. My favorite win was automating repeatable calc/markup steps so our team could focus on judgment over drudgery.",
+    story: [
+    "I have always been fond of architecture and dreamt of building my own house one day. My 12-month internship with Stantec helped me step closer to that goal and grow as an engineer in the buildings industry. Being involved in various projects and working with diverse disciplines that support communities was a rewarding experience. Working in a large corporate environment taught me that working smart is about collaborating with people, using resources effectively, building systems, and utilizing what already exists rather than reinventing the wheel.",
+    "From my previous learning experience at MEDAL, I took the initiative to create an energy analysis software manual and training system. The team was transitioning from discontinued software to a new platform and was experiencing difficulties due to the steep learning curve. Through this initiative, I helped improve team onboarding and future workflow consistency.",
+    "After graduation, I am continuing this journey with Stantec as an EIT, bringing my digital proficiency while developing deeper expertise in the buildings industry."
+    ],
   },
 
   {
@@ -30,20 +33,25 @@ const ITEMS = [
     org: "AKCSE",
     date: "Sept 2023 – Sept 2025",
     location: "Calgary, AB",
-    story:
-      "Leadership meant designing the conditions for others to do their best work: clear roles, tight run-of-show docs, and thoughtful follow-ups. We made events welcoming and useful, and I learned how small systems—sign-ups, reminders, room setup—shape the experience.",
-  },
+    story: [
+      "Through my research background, academic involvement, and connection to the Korean-Canadian community, I saw the potential of the AKCSE U of C Chapter and wanted to help strengthen it through leadership. During my term, I introduced a clearer vision, organizational structure, and communication protocols. I learned how hard work and passion can become contagious, and how the right resources and responsibilities can help individuals grow. By recognizing and maximizing each person’s strengths, I helped build stronger teams. Eventually, AKCSE was able to attract sponsorship from the local community and significantly improve its financial position.",
+      "However, leadership also came with challenges. Before AKCSE, I assumed that shared goals and strong performance would naturally create alignment. Through this experience, I learned that the balance between individuals and organizations is shaped by many factors beyond great results, including self-interest, misalignment, unclear communication, and different levels of commitment. Navigating these dynamics wisely became one of my most important leadership lessons. It taught me that strong leadership requires more than technical ability."
+    ]
+},
 
   {
     id: "medal",
-    label: "MEDAL Lab",
+    label: "MEDAL",
     title: "Research Assistant",
-    org: "MEDAL Lab",
+    org: "MEDAL",
     date: "May 2023 – Jun 2024",
     location: "Calgary, AB",
-    story:
-      "In a small lab team, I helped build an early hydrogen/methane sensor prototype—CAD, quick-turn assemblies, and plenty of data scrubbing. Translating messy signals into decisions became the work: what to change next, and why. We moved fast, documented everything, and collaborated internationally toward IP-ready designs.",
-  },
+    story:[
+    "My time at MEDAL was my first step into professional engineering. I worked with professors and doctors who trusted me with significant freedom and leadership, but at the time, I was still learning how to trust and apply my own engineering judgment. Looking back, I realized that I often stayed within the boundaries of my position and relied too heavily on my mentors’ opinions.",
+    "This experience taught me an important lesson: take action and make full use of my abilities. Moving forward, I became more intentional about bringing ideas forward, challenging assumptions, and creating synergy instead of waiting passively.",
+    "I also learned more about my strengths. My positive attitude and ability to learn quickly were recognized, allowing me to contribute to various intellectual property formulations. One of my favourite mindsets I learned from my mentor was, “you never know until you try” — and that mindset shaped my approach in every field afterward."
+  ]
+    },
 
   {
     id: "suav",
@@ -53,7 +61,7 @@ const ITEMS = [
     date: "Sept 2022 – Oct 2023",
     location: "Calgary, AB",
     story:
-      "I worked on airframe structures and fixtures—SolidWorks models, FEA checks, and CNCable parts. Competition timelines taught me to trade elegance for robustness, and to love a good checklist. Shipping something that flies is a special kind of motivation.",
+      "When I chose to study engineering, I dreamt of building my own airplane. My interest led me to Schulich UAV, a competitive engineering club that builds carbon-fiber unmanned aerial vehicles (UAVs). Through hands-on work in aircraft design, fabrication, and testing, I truly enjoyed seeing how engineering ideas become real systems. Working with passionate peers also pushed me to step up, ignited my motivation to grow, and helped me recognize the areas I needed to improve. This experience became the spark of my engineering journey and helped me develop a clearer vision of the kind of engineer I wanted to become."
   },
 ];
 
@@ -206,8 +214,15 @@ const Experience = () => {
               </header>
 
               <div className="exp__storywrap">
-                <p className="exp__story">{sel.story}</p>
-                {/* more <p>…</p> if needed */}
+                {Array.isArray(sel.story) ? (
+                  sel.story.map((paragraph, index) => (
+                    <p key={index} className="exp__story">
+                      {paragraph}
+                    </p>
+                  ))
+                ) : (
+                  <p className="exp__story">{sel.story}</p>
+                )}
               </div>
             </div>
           </article>
