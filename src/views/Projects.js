@@ -1,5 +1,50 @@
 import React, { useState } from "react";
 import ProjectModal from "../components/ProjectModal";
+import scramjetCover from "../assets/images/projects/scramjet_cfd/scramjet_cfd_01.png";
+import scramjetImg02 from "../assets/images/projects/scramjet_cfd/scramjet_cfd_02.png";
+import scramjetImg03 from "../assets/images/projects/scramjet_cfd/scramjet_cfd_03.png";
+import scramjetImg04 from "../assets/images/projects/scramjet_cfd/scramjet_cfd_04.jpg";
+import scramjetImg05 from "../assets/images/projects/scramjet_cfd/scramjet_cfd_05.jpg";
+import scramjetImg06 from "../assets/images/projects/scramjet_cfd/scramjet_cfd_06.png";
+import scramjetImg07 from "../assets/images/projects/scramjet_cfd/scramjet_cfd_07.png";
+import feaCover from "../assets/images/projects/fea/fea_01.jpg";
+import feaImg02 from "../assets/images/projects/fea/fea_02.jpg";
+import feaImg03 from "../assets/images/projects/fea/fea_03.jpg";
+import feaImg04 from "../assets/images/projects/fea/fea_04.jpg";
+import costaRicaCover from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_01.JPG";
+import costaRicaImg02 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_02.JPG";
+import costaRicaImg03 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_03.JPG";
+import costaRicaImg04 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_04.JPG";
+import costaRicaImg05 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_05.JPG";
+import costaRicaImg06 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_06.JPG";
+import costaRicaImg07 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_07.JPG";
+import costaRicaImg08 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_08.JPG";
+import costaRicaImg09 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_09.JPG";
+import costaRicaImg10 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_10.JPG";
+import portfolioCover from "../assets/images/projects/portfolio_website/portfolio_website_01.png";
+import tutoringCover from "../assets/images/projects/tutoring_business/tutoring_business_01.png";
+import tutoringImg02 from "../assets/images/projects/tutoring_business/tutoring_business_02.png";
+import tutoringImg03 from "../assets/images/projects/tutoring_business/tutoring_business_03.png";
+import uavCover from "../assets/images/projects/uav/uav_01.jpg";
+import uavImg02 from "../assets/images/projects/uav/uav_02.jpg";
+import uavImg03 from "../assets/images/projects/uav/uav_03.jpg";
+import uavImg04 from "../assets/images/projects/uav/uav_04.jpg";
+import uavImg05 from "../assets/images/projects/uav/uav_05.jpg";
+import uavImg06 from "../assets/images/projects/uav/uav_06.jpg";
+import uavImg07 from "../assets/images/projects/uav/uav_07.jpeg";
+import uavImg08 from "../assets/images/projects/uav/uav_08.JPG";
+import uavImg09 from "../assets/images/projects/uav/uav_09.JPG";
+import uavImg10 from "../assets/images/projects/uav/uav_10.JPG";
+import uavImg11 from "../assets/images/projects/uav/uav_11.JPG";
+import cansatCover from "../assets/images/projects/cansat/cansat_01.png";
+import cansatImg02 from "../assets/images/projects/cansat/cansat_02.png";
+import cansatImg03 from "../assets/images/projects/cansat/cansat_03.jpg";
+import cansatImg04 from "../assets/images/projects/cansat/cansat_04.jpg";
+import cansatImg05 from "../assets/images/projects/cansat/cansat_05.jpg";
+import cansatImg06 from "../assets/images/projects/cansat/cansat_06.jpg";
+import cansatImg07 from "../assets/images/projects/cansat/cansat_07.jpg";
+import cansatImg08 from "../assets/images/projects/cansat/cansat_08.JPG";
+import cansatImg09 from "../assets/images/projects/cansat/cansat_09.JPG";
 
 const ITEMS = [
   // ────────────────────────────────────────────────
@@ -8,7 +53,7 @@ const ITEMS = [
   {
     id: "scramjet_cfd",
     title: "Scramjet CFD",
-    cover: "https://picsum.photos/1200/520?random=12",
+    cover: scramjetCover,
     keywords: [
       "Computational Fluid Dynamics (CFD)",
       "hypersonics",
@@ -28,8 +73,12 @@ const ITEMS = [
       "After establishing the workflow, the project evaluated how changes in cowl-lip geometry affected shock behavior, pressure recovery, compression, and inlet stability. The study identified the peak-performance cowl-lip geometry and the non-linear relationship caused by varying the geometry. One of the key assets of this project was the validated OpenFOAM workflow itself, which provides a reusable foundation for the sponsor and future researchers working in an area with limited resources and a steep learning curve."
     ],
     images: [
-      "https://picsum.photos/900/600?random=121",
-      "https://picsum.photos/900/600?random=122"
+      scramjetImg02,
+      scramjetImg03,
+      scramjetImg04,
+      scramjetImg05,
+      scramjetImg06,
+      scramjetImg07
     ]
   },
 
@@ -39,7 +88,7 @@ const ITEMS = [
   {
     id: "fea",
     title: "PCB Thermal FEA",
-    cover: "https://picsum.photos/1200/520?random=16",
+    cover: feaCover,
     keywords: [
       "finite element analysis",
       "convergence study",
@@ -56,7 +105,7 @@ const ITEMS = [
 
       "After solving for the temperature distribution, the project evaluated how increasing heat generation affected the PCB temperature field and how mesh refinement influenced the accuracy of the result. This project strengthened my understanding of the full FEA workflow, from mathematical formulation and coding implementation to post-processing and engineering interpretation."
     ],
-    images: ["https://picsum.photos/900/600?random=161"]
+    images: [feaImg02, feaImg03, feaImg04]
   },
 
   // ────────────────────────────────────────────────
@@ -65,10 +114,10 @@ const ITEMS = [
   {
     id: "costa_rica_building",
     title: "Costa Rica Community Building",
-    cover: "https://picsum.photos/1200/520?random=17",
+    cover: costaRicaCover,
     keywords: [
       "construction",
-      "community Development",
+      "community development",
       "hands-on building",
       "global project"
     ],
@@ -83,8 +132,15 @@ const ITEMS = [
       "This experience was also personally meaningful because I have always wanted to build my own house one day. Working on-site helped me better understand construction from a practical perspective and gave me a stronger appreciation for the connection between design, labour, materials, and community impact."
     ],
     images: [
-      "https://picsum.photos/900/600?random=171",
-      "https://picsum.photos/900/600?random=172"
+      costaRicaImg02,
+      costaRicaImg03,
+      costaRicaImg04,
+      costaRicaImg05,
+      costaRicaImg06,
+      costaRicaImg07,
+      costaRicaImg08,
+      costaRicaImg09,
+      costaRicaImg10
     ]
   },
 
@@ -94,7 +150,7 @@ const ITEMS = [
   {
     id: "portfolio_website",
     title: "Portfolio Website",
-    cover: "https://picsum.photos/1200/520?random=18",
+    cover: portfolioCover,
     keywords: [
       "AI",
       "prompt engineering",
@@ -109,10 +165,6 @@ const ITEMS = [
       "I created this portfolio website to track my journey as an engineer and to communicate my skills, projects, and experiences more effectively. I wanted to create a medium that shows how my experiences connect and how I am growing as an engineer.",
       "This project also became a way to test the power of AI. I used AI development tools, such as Codex, to help build and improve the website, and I used GitHub to manage the code, track changes, and organize the development process. VS Code was the IDE that streamlined both the GitHub and Codex workflows.",
       "With a basic understanding of HTML, CSS, JavaScript(React), I only needed to understand the structure of the code while AI helped fix the grammatical and syntax-related parts. Clear prompts, specific goals, and careful review were necessary to achieve the design and function I wanted, as AI outputs could sometimes be misleading. However, the capability of AI was exceptional, and this really opened up opportunities for how I could build further tools throughout my engineering journey."
-    ],
-    images: [
-      "https://picsum.photos/900/600?random=181",
-      "https://picsum.photos/900/600?random=182"
     ]
   },
 
@@ -122,7 +174,7 @@ const ITEMS = [
   {
     id: "tutoring_business",
     title: "Tutoring Business",
-    cover: "https://picsum.photos/1200/520?random=19",
+    cover: tutoringCover,
     keywords: [
       "entrepreneurship",
       "negotiation",
@@ -143,7 +195,10 @@ const ITEMS = [
 
       "The result was promising. I was able to offer premium value in a competitive market, and my tutoring rate reached up to 55.5% higher than the typical market wage."
     ],
-    images: ["https://picsum.photos/900/600?random=191"]
+    images: [
+      tutoringImg02,
+      tutoringImg03
+    ]
   },
 
   // ────────────────────────────────────────────────
@@ -152,7 +207,7 @@ const ITEMS = [
   {
     id: "cansat",
     title: "CANSAT Parachute Mechanism",
-    cover: "https://picsum.photos/1200/520?random=11",
+    cover: cansatCover,
     keywords: [
       "mechanism design",
       "prototyping",
@@ -173,9 +228,14 @@ const ITEMS = [
       "Unfortunately, the final mechanism failed during release because I underestimated the structural strength required for the 3D-printed compartment. When the spring released, the load broke the mechanism section out of the compartment instead of cleanly ejecting the parachute pin. Although the result was not successful, the project became a valuable design lesson in load paths, structural reinforcement, material limitations, and prototype testing."
     ],
     images: [
-      "https://picsum.photos/900/600?random=111",
-      "https://picsum.photos/900/600?random=112",
-      "https://picsum.photos/900/600?random=113"
+      cansatImg02,
+      cansatImg03,
+      cansatImg04,
+      cansatImg05,
+      cansatImg06,
+      cansatImg07,
+      cansatImg08,
+      cansatImg09
     ]
   },
 
@@ -211,7 +271,7 @@ const ITEMS = [
   {
     id: "uav",
     title: "UAV Design & Manufacturing",
-    cover: "https://picsum.photos/1200/520?random=14",
+    cover: uavCover,
     keywords: [
       "unmanned aerial vehicle (UAV)",
       "composite manufacturing",
@@ -234,9 +294,16 @@ const ITEMS = [
       "Through this project, I gained hands-on experience in the full aircraft development process, from early design decisions to CAD modelling, structural layout, composite manufacturing, and assembly. This experience also continues into my personal project of building my own RC plane under 250 g, where I am applying knowledge from my aerodynamics courses. In the future, I plan to design and build my own rideable aircraft."
     ],
     images: [
-      "https://picsum.photos/900/600?random=141",
-      "https://picsum.photos/900/600?random=142",
-      "https://picsum.photos/900/600?random=143"
+      uavImg02,
+      uavImg03,
+      uavImg04,
+      uavImg05,
+      uavImg06,
+      uavImg07,
+      uavImg08,
+      uavImg09,
+      uavImg10,
+      uavImg11
     ]
   },
 
