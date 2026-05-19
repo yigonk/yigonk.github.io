@@ -576,8 +576,13 @@
 }
 
 .modal__desc {
-  margin: 0 0 12px;
-  color: #0f172a;
+  margin: 0 0 1rem;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.modal__desc:last-child {
+  margin-bottom: 0;
 }
 
 .modal__gallery {

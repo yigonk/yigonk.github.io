@@ -21,7 +21,6 @@ const ITEMS = [
     location: "Calgary, AB",
     story: [
     "I have always been fond of architecture and dreamt of building my own house one day. My 12-month internship with Stantec helped me step closer to that goal and grow as an engineer in the buildings industry. Being involved in various projects and working with diverse disciplines that support communities was a rewarding experience. Working in a large corporate environment taught me that working smart is about collaborating with people, using resources effectively, building systems, and utilizing what already exists rather than reinventing the wheel.",
-    "From my previous learning experience at MEDAL, I took the initiative to create an energy analysis software manual and training system. The team was transitioning from discontinued software to a new platform and was experiencing difficulties due to the steep learning curve. Through this initiative, I helped improve team onboarding and future workflow consistency.",
     "After graduation, I am continuing this journey with Stantec as an EIT, bringing my digital proficiency while developing deeper expertise in the buildings industry."
     ],
   },
