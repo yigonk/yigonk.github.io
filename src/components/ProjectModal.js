@@ -79,9 +79,15 @@ const ProjectModal = ({ item, onClose }) => {
               </div>
             )}
 
-            <p className="modal__desc">
-              {item.description || "More details coming soon."}
-            </p>
+            {Array.isArray(item.description) ? (
+              item.description.map((para, i) => (
+                <p key={i} className="modal__desc">
+                  {para}
+                </p>
+              ))
+            ) : (
+              <p className="modal__desc">{item.description || "More details coming soon."}</p>
+            )}
 
             {/* additional images */}
             {item.images && item.images.length > 0 && (
@@ -89,7 +95,7 @@ const ProjectModal = ({ item, onClose }) => {
                 {item.images.map((src, i) => {
                   return (
                     <figure key={i} className="g">
-                      <img src={src} alt={`${item.title} image ${i + 1}`} />
+                      <img src={src} alt={`${item.title} img ${i + 1}`} />
                     </figure>
                   );
                 })}

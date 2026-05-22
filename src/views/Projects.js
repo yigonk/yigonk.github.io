@@ -1,82 +1,388 @@
 import React, { useState } from "react";
 import ProjectModal from "../components/ProjectModal";
+import scramjetCover from "../assets/images/projects/scramjet_cfd/scramjet_cfd_01.png";
+import scramjetImg02 from "../assets/images/projects/scramjet_cfd/scramjet_cfd_02.png";
+import scramjetImg03 from "../assets/images/projects/scramjet_cfd/scramjet_cfd_03.png";
+import scramjetImg04 from "../assets/images/projects/scramjet_cfd/scramjet_cfd_04.jpg";
+import scramjetImg05 from "../assets/images/projects/scramjet_cfd/scramjet_cfd_05.jpg";
+import scramjetImg06 from "../assets/images/projects/scramjet_cfd/scramjet_cfd_06.png";
+import scramjetImg07 from "../assets/images/projects/scramjet_cfd/scramjet_cfd_07.png";
+import feaCover from "../assets/images/projects/fea/fea_01.jpg";
+import feaImg02 from "../assets/images/projects/fea/fea_02.jpg";
+import feaImg03 from "../assets/images/projects/fea/fea_03.jpg";
+import feaImg04 from "../assets/images/projects/fea/fea_04.jpg";
+import costaRicaCover from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_01.JPG";
+import costaRicaImg02 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_02.JPG";
+import costaRicaImg03 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_03.JPG";
+import costaRicaImg04 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_04.JPG";
+import costaRicaImg05 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_05.JPG";
+import costaRicaImg06 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_06.JPG";
+import costaRicaImg07 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_07.JPG";
+import costaRicaImg08 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_08.JPG";
+import costaRicaImg09 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_09.JPG";
+import costaRicaImg10 from "../assets/images/projects/costa_rica_engineering/costa_rica_engineering_10.JPG";
+import portfolioCover from "../assets/images/projects/portfolio_website/portfolio_website_01.png";
+import tutoringCover from "../assets/images/projects/tutoring_business/tutoring_business_01.png";
+import tutoringImg02 from "../assets/images/projects/tutoring_business/tutoring_business_02.png";
+import tutoringImg03 from "../assets/images/projects/tutoring_business/tutoring_business_03.png";
+import uavCover from "../assets/images/projects/uav/uav_01.jpg";
+import uavImg02 from "../assets/images/projects/uav/uav_02.jpg";
+import uavImg03 from "../assets/images/projects/uav/uav_03.jpg";
+import uavImg04 from "../assets/images/projects/uav/uav_04.jpg";
+import uavImg05 from "../assets/images/projects/uav/uav_05.jpg";
+import uavImg06 from "../assets/images/projects/uav/uav_06.jpg";
+import uavImg07 from "../assets/images/projects/uav/uav_07.jpeg";
+import uavImg08 from "../assets/images/projects/uav/uav_08.JPG";
+import uavImg09 from "../assets/images/projects/uav/uav_09.JPG";
+import uavImg10 from "../assets/images/projects/uav/uav_10.JPG";
+import uavImg11 from "../assets/images/projects/uav/uav_11.JPG";
+import uavImg12 from "../assets/images/projects/uav/uav_12.png";
+import uavImg13 from "../assets/images/projects/uav/uav_13.png";
+import uavImg14 from "../assets/images/projects/uav/uav_14.png";
+import uavImg15 from "../assets/images/projects/uav/uav_15.png";
+import uavImg16 from "../assets/images/projects/uav/uav_16.png";
+import cansatCover from "../assets/images/projects/cansat/cansat_01.png";
+import cansatImg02 from "../assets/images/projects/cansat/cansat_02.png";
+import cansatImg03 from "../assets/images/projects/cansat/cansat_03.jpg";
+import cansatImg04 from "../assets/images/projects/cansat/cansat_04.jpg";
+import cansatImg05 from "../assets/images/projects/cansat/cansat_05.jpg";
+import cansatImg06 from "../assets/images/projects/cansat/cansat_06.jpg";
+import cansatImg07 from "../assets/images/projects/cansat/cansat_07.jpg";
+import cansatImg08 from "../assets/images/projects/cansat/cansat_08.JPG";
+import cansatImg09 from "../assets/images/projects/cansat/cansat_09.JPG";
+import sensorCover from "../assets/images/projects/sensor_system/sensor_system_01.png";
+import sensorImg02 from "../assets/images/projects/sensor_system/sensor_system_02.png";
+import sensorImg03 from "../assets/images/projects/sensor_system/sensor_system_03.png";
+import sensorImg04 from "../assets/images/projects/sensor_system/sensor_system_04.png";
+import sensorImg05 from "../assets/images/projects/sensor_system/sensor_system_05.png";
+import sensorImg06 from "../assets/images/projects/sensor_system/sensor_system_06.png";
+import sensorImg07 from "../assets/images/projects/sensor_system/sensor_system_07.png";
+import sensorImg08 from "../assets/images/projects/sensor_system/sensor_system_08.png";
+import sensorImg09 from "../assets/images/projects/sensor_system/sensor_system_09.png";
+import sensorImg10 from "../assets/images/projects/sensor_system/sensor_system_10.png";
+import sensorImg11 from "../assets/images/projects/sensor_system/sensor_system_11.png";
+import sensorImg12 from "../assets/images/projects/sensor_system/sensor_system_12.png";
+import sensorImg13 from "../assets/images/projects/sensor_system/sensor_system_13.png";
+import iesveCover from "../assets/images/projects/iesve_manual/iesve_manual_01.png";
+import iesveImg02 from "../assets/images/projects/iesve_manual/iesve_manual_02.png";
+import iesveImg03 from "../assets/images/projects/iesve_manual/iesve_manual_03.png";
+import iesveImg04 from "../assets/images/projects/iesve_manual/iesve_manual_04.png";
+import iesveImg05 from "../assets/images/projects/iesve_manual/iesve_manual_05.png";
 
 const ITEMS = [
+  // ────────────────────────────────────────────────
+  // 1. Scramjet CFD (Latest)
+  // ────────────────────────────────────────────────
+  {
+    id: "scramjet_cfd",
+    title: "Scramjet CFD",
+    cover: scramjetCover,
+    keywords: [
+      "Computational Fluid Dynamics (CFD)",
+      "hypersonics",
+      "X-51A Waverider",
+      "turbulence modeling",
+      "OpenFOAM",
+      "parametric study"
+    ],
+    date: "2025–2026",
+    location: "Calgary, AB",
+    affiliate: "AERO-CORE & North Vector Dynamics",
+    description: [
+      "This project focused on developing a cost-effective CFD workflow to analyze the inlet section of a hypersonic scramjet engine. Scramjet testing usually requires expensive facilities and specialized tools, so the project used OpenFOAM, an open-source Linux-based CFD software, to make advanced high-speed flow simulation more accessible.",
+
+      "The main challenge was not only getting results from the simulation, but also building a reliable workflow. Hypersonic flow is highly sensitive to geometry, mesh quality, and solver settings, so the project began with verification and validation using benchmark cases before applying the method to an X-51A/MAX-2-inspired scramjet inlet. This process helped reduce uncertainty and created a repeatable workflow for future analysis. The final project scope focused on the inlet–isolator region because this section controls the compression process and strongly affects downstream engine performance.",
+
+      "After establishing the workflow, the project evaluated how changes in cowl-lip geometry affected shock behavior, pressure recovery, compression, and inlet stability. The study identified the peak-performance cowl-lip geometry and the non-linear relationship caused by varying the geometry. One of the key assets of this project was the validated OpenFOAM workflow itself, which provides a reusable foundation for the sponsor and future researchers working in an area with limited resources and a steep learning curve."
+    ],
+    images: [
+      scramjetImg02,
+      scramjetImg03,
+      scramjetImg04,
+      scramjetImg05,
+      scramjetImg06,
+      scramjetImg07
+    ]
+  },
+
+  // ────────────────────────────────────────────────
+  // 2. Advanced Structural FEA
+  // ────────────────────────────────────────────────
+  {
+    id: "fea",
+    title: "PCB Thermal FEA",
+    cover: feaCover,
+    keywords: [
+      "finite element analysis",
+      "convergence study",
+      "gaussian quadrature",
+      "thermal analysis"
+    ],
+    date: "2026",
+    location: "Calgary, AB",
+    affiliate: "Schulich School of Engineering",
+    description: [
+      "This project focused on understanding the finite element analysis process by establishing each mathematical step behind the simulation. Rather than relying on commercial FEA software, the project built the analysis process from the ground up in MATLAB to better understand how geometry, material properties, boundary conditions, element formulation, and numerical integration work together to produce a thermal solution.",
+
+      "The model analyzed heat transfer through a printed circuit board with internal heat generation, fixed-temperature cooling, insulated boundaries, and convective heat transfer. The PCB geometry was divided into structured quadrilateral elements, and the finite element formulation was implemented using shape functions, the weak form of the governing heat equation, Gaussian quadrature, and global matrix assembly.",
+
+      "After solving for the temperature distribution, the project evaluated how increasing heat generation affected the PCB temperature field and how mesh refinement influenced the accuracy of the result. This project strengthened my understanding of the full FEA workflow, from mathematical formulation and coding implementation to post-processing and engineering interpretation."
+    ],
+    images: [feaImg02, feaImg03, feaImg04]
+  },
+
+  // ────────────────────────────────────────────────
+  // 3. Costa Rica Community Building
+  // ────────────────────────────────────────────────
+  {
+    id: "costa_rica_building",
+    title: "Costa Rica Community Building",
+    cover: costaRicaCover,
+    keywords: [
+      "construction",
+      "community development",
+      "hands-on building",
+      "global project"
+    ],
+    date: "2026",
+    location: "Costa Rica",
+    affiliate: "Developing World Connections (DWC)",
+    description: [
+      "I travelled to Costa Rica to gain hands-on construction experience and to see how engineering work can make a direct impact on a local community. The project took place in Las Brisas de Pacuarito, a rural community near Barbilla National Park, where limited infrastructure and economic opportunities create challenges for local residents.",
+
+      "The project focused on constructing a tree nursery with a reinforced structure and basic irrigation system. This nursery was designed to support native plant production, local biodiversity, and sustainable rural development. Through the project, I was able to take part in practical construction work while learning how small infrastructure projects can support larger community and environmental goals. I also enjoyed connecting with local residents, who welcomed us with amazing food, hospitality, local tours, and the opportunity to experience part of their everyday life.",
+
+      "This experience was also personally meaningful because I have always wanted to build my own house one day. Working on-site helped me better understand construction from a practical perspective and gave me a stronger appreciation for the connection between design, labour, materials, and community impact."
+    ],
+    images: [
+      costaRicaImg02,
+      costaRicaImg03,
+      costaRicaImg04,
+      costaRicaImg05,
+      costaRicaImg06,
+      costaRicaImg07,
+      costaRicaImg08,
+      costaRicaImg09,
+      costaRicaImg10
+    ]
+  },
+
+  // ────────────────────────────────────────────────
+  // 4. Portfolio Website
+  // ────────────────────────────────────────────────
+  {
+    id: "portfolio_website",
+    title: "Portfolio Website",
+    cover: portfolioCover,
+    keywords: [
+      "AI",
+      "prompt engineering",
+      "vibe coding",
+      "github",
+      "codex"
+    ],
+    date: "2025",
+    location: "Calgary, AB",
+    affiliate: "Personal Project",
+    description: [
+      "I created this portfolio website to track my journey as an engineer and to communicate my skills, projects, and experiences more effectively. I wanted to create a medium that shows how my experiences connect and how I am growing as an engineer.",
+      "This project also became a way to test the power of AI. I used AI development tools, such as Codex, to help build and improve the website, and I used GitHub to manage the code, track changes, and organize the development process. VS Code was the IDE that streamlined both the GitHub and Codex workflows.",
+      "With a basic understanding of HTML, CSS, JavaScript(React), I only needed to understand the structure of the code while AI helped fix the grammatical and syntax-related parts. Clear prompts, specific goals, and careful review were necessary to achieve the design and function I wanted, as AI outputs could sometimes be misleading. However, the capability of AI was exceptional, and this really opened up opportunities for how I could build further tools throughout my engineering journey."
+    ]
+  },
+
+  // ────────────────────────────────────────────────
+  // 5. Tutoring Business
+  // ────────────────────────────────────────────────
+  {
+    id: "tutoring_business",
+    title: "Tutoring Business",
+    cover: tutoringCover,
+    keywords: [
+      "entrepreneurship",
+      "negotiation",
+      "sales",
+      "marketing",
+      "consulting",
+      "client relations"
+    ],
+    date: "2025–present",
+    location: "Calgary, AB",
+    affiliate: "Personal Project",
+    description: [
+      "This project began from my three years of tutoring experience and my own academic journey. I realized that the tutoring market is often focused only on academic grades, while many parents are ultimately looking for their child’s long-term success. “Success” is often vaguely defined by parents, so I saw an opportunity to create a tutoring service that defines a clearer path to success and positions the service as a premium offering.",
+
+      "To translate this premium value into a clear program, I developed a structured tutoring service based on the DEAL framework: Define, Eliminate, Automate, and Liberate. The curriculum was designed to cover the key skills, mindsets, and strategies that helped my peers and me achieve our goals. This allowed the service to move beyond traditional subject-based tutoring and offer a premium learning experience.",
+
+      "Communicating the value of this service was one of the most important parts of the project. I developed marketing materials that highlighted my academic achievements, limited availability, structured curriculum, and structured learning period. I also implemented regular progress reports and consultations to strengthen communication with clients and build trust over time. The main challenge was justifying the premium price, which required consistent results and time to build trust. Finding clients was also challenging, as it required time to spread my name and branding to potential clients.",
+
+      "The result was promising. I was able to offer premium value in a competitive market, and my tutoring rate reached up to 55.5% higher than the typical market wage."
+    ],
+    images: [
+      tutoringImg02,
+      tutoringImg03
+    ]
+  },
+
+  // ────────────────────────────────────────────────
+  // 6. CANSAT Parachute Mechanism
+  // ────────────────────────────────────────────────
   {
     id: "cansat",
     title: "CANSAT Parachute Mechanism",
-    cover: "https://picsum.photos/1200/520?random=11",
-    keywords: ["mechanism", "CAD", "prototype"],
-    date: "2023",
-    location: "Calgary, AB",
-    affiliate: "University of Calgary",
-    description:
-      "Compact, reliable deployment mechanism for a CanSat payload; design-for-weight and packability.",
-    images: [
-      "https://picsum.photos/900/600?random=111",
-      "https://picsum.photos/900/600?random=112",
-      "https://picsum.photos/900/600?random=113",
+    cover: cansatCover,
+    keywords: [
+      "mechanism design",
+      "prototyping",
+      "design for assembly (DFA)",
+      "design for manufacturing (DFM)",
+      "lightweight design"
     ],
-  },
-  {
-    id: "scramjet",
-    title: "Scramjet CFD Optimization",
-    cover: "https://picsum.photos/1200/520?random=12",
-    keywords: ["CFD", "aero", "optimization"],
-    date: "2024",
-    location: "Calgary, AB",
-    affiliate: "UCalgary (Aero)",
-    description:
-      "Compressible CFD studies; inlet/isolator geometry iterations to improve pressure recovery.",
-    images: [
-      "https://picsum.photos/900/600?random=121",
-      "https://picsum.photos/900/600?random=122",
+    date: "2025",
+    location: "Berlin, Germany",
+    affiliate: "Technical University Berlin",
+    description: [
+      "This project was completed during my summer exchange at TU Berlin. The goal of the project was to design, build, and launch a small satellite-shaped rover that could collect flight data, land safely with a parachute, detach the parachute after touchdown, and drive on the ground. The project had strict size, mass, and space constraints, which made mechanical design, packaging, and system integration important parts of the challenge.",
+
+      "The project allowed a high level of design flexibility, so I used this opportunity to explore a more creative and simplified parachute release mechanism. Instead of adding a dedicated actuator inside the limited compartment space, my design used the existing wheel actuator to trigger the parachute release. Since the parachute release only needed to occur once, reducing the number of components provided advantages in weight, space, and overall system simplicity. The use of 3D printing also gave flexibility in manufacturing and allowed the mechanism to be integrated directly into the compartment design.",
+
+      "The mechanism used a string attached to the wheel to pull a release pin. The parachute pin was held in place against a compressed spring, and when the wheel actuated, the string pulled the pin and released the spring force to eject the parachute connection. The concept was designed to convert the rover’s existing wheel motion into a one-time mechanical release action.",
+
+      "Unfortunately, the final mechanism failed during release because I underestimated the structural strength required for the 3D-printed compartment. When the spring released, the load broke the mechanism section out of the compartment instead of cleanly ejecting the parachute pin. Although the result was not successful, the project became a valuable design lesson in load paths, structural reinforcement, material limitations, and prototype testing."
     ],
+    images: [
+      cansatImg02,
+      cansatImg03,
+      cansatImg04,
+      cansatImg05,
+      cansatImg06,
+      cansatImg07,
+      cansatImg08,
+      cansatImg09
+    ]
   },
+
+  // ────────────────────────────────────────────────
+  // 7. IES VE Workflow & Training System
+  // ────────────────────────────────────────────────
   {
-    id: "iesve",
-    title: "Energy Modeling Training Manual",
-    cover: "https://picsum.photos/1200/520?random=13",
-    keywords: ["IES VE", "BIM", "workflow"],
+    id: "iesve_manual",
+    title: "IES VE Workflow & Training System",
+    cover: iesveCover,
+    keywords: [
+      "digital transformation",
+      "workflow standardization",
+      "knowledge transfer",
+      "optimization"
+    ],
     date: "2024–2025",
     location: "Calgary, AB",
     affiliate: "Stantec",
-    description:
-      "Onboarding manual that standardizes templates and reduces ramp-up time for VE modeling.",
-    images: ["https://picsum.photos/900/600?random=131"],
+    description: [
+      "This project was created during my internship at Stantec to support the team’s transition to a new building energy analysis software. The previous software was being discontinued, and the team was moving to IES VE, which had a steep learning curve and limited internal training resources. The main problem was not only learning the software myself, but also creating a system that would help future users learn it more efficiently.",
+
+      "I took the initiative to develop an internal training document that organized the software workflow into clearer steps. The document included setup guidance, screenshots, modelling procedures, common mistakes, and troubleshooting notes. Instead of relying only on verbal explanations or repeated one-on-one support, the manual created a reusable reference that team members could follow independently.",
+
+      "The goal of the document was to improve onboarding, reduce confusion, and create more consistent workflows across the team. Through this project, I learned how important clear documentation is in a professional engineering environment."
+    ],
+    images: [
+      iesveImg02,
+      iesveImg03,
+      iesveImg04,
+      iesveImg05
+    ]
   },
+
+  // ────────────────────────────────────────────────
+  // 8. UAV Design & Manufacturing
+  // ────────────────────────────────────────────────
   {
     id: "uav",
     title: "UAV Design & Manufacturing",
-    cover: "https://picsum.photos/1200/520?random=14",
-    keywords: ["UAV", "FEA", "manufacturing"],
-    date: "2022–2023",
-    location: "Calgary, AB",
-    affiliate: "Schulich UAV",
-    description:
-      "Airframe design, FEA checks, layups, and CNC fixtures for SUAV competition.",
-    images: [
-      "https://picsum.photos/900/600?random=141",
-      "https://picsum.photos/900/600?random=142",
-      "https://picsum.photos/900/600?random=143",
+    cover: uavCover,
+    keywords: [
+      "unmanned aerial vehicle (UAV)",
+      "composite manufacturing",
+      "carbon-fiber",
+      "CAD",
+      "CAE"
     ],
+    date: "2022–2024",
+    location: "Calgary, AB",
+    affiliate: "Schulich UAV & Personal Project",
+    description: [
+      "This project was completed as part of Schulich UAV, a competitive student engineering club, in preparation for the AUVSI Student Unmanned Aerial Systems competition. The competition required teams to design, integrate, and demonstrate an unmanned aircraft capable of autonomous flight, navigation, remote sensing, obstacle avoidance, object detection, and air drop.",
+
+      "My work focused on the mechanical design and manufacturing side of the fixed-wing UAV. The design process started from mission requirements such as flight range, payload needs, takeoff and landing constraints, air drop capability, and reliability. From there, the mechanical team worked through aerodynamic layout, wing sizing, internal structure, fuselage packaging, landing gear integration, and manufacturability while balancing performance, weight, strength, and ease of assembly.",
+
+      "For CAD development, I used both SolidWorks and Onshape to support detailed part modelling, collaborative design work, and full aircraft assemblies. CAD models were also used to create 3D-printed parts through school resources, often for internal alignment and structural integration.",
+
+      "Manufacturing involved hands-on work with foam-core wings, internal bulkheads, carbon-fiber spars, composite layup, and vacuum bagging. The wings were designed to be lightweight while maintaining structural strength, using foam cores reinforced with aluminum bulkheads and carbon-fiber components, then wrapped with carbon fiber and epoxy to create a stiff composite surface. The fuselage and internal structures were also designed with manufacturability in mind, including 3D-printed molds and composite layup methods for complex geometry.",
+
+      "Through this project, I gained hands-on experience in the full aircraft development process, from early design decisions to CAD modelling, structural layout, composite manufacturing, and assembly. This experience also continues into my personal project of building my own RC plane under 250 g, where I am applying knowledge from my aerodynamics courses. In the future, I plan to design and build my own rideable aircraft."
+    ],
+    images: [
+      uavImg02,
+      uavImg03,
+      uavImg04,
+      uavImg05,
+      uavImg06,
+      uavImg07,
+      uavImg08,
+      uavImg09,
+      uavImg10,
+      uavImg11,
+      uavImg12,
+      uavImg13,
+      uavImg14,
+      uavImg15,
+      uavImg16
+    ]
   },
+
+  // ────────────────────────────────────────────────
+  // 9. Hydrogen & Methane Separation & Sensing System
+  // ────────────────────────────────────────────────
   {
-    id: "sensor",
-    title: "Hydrogen & Methane Sensor System",
-    cover: "https://picsum.photos/1200/520?random=15",
-    keywords: ["sensors", "data", "IP"],
+    id: "sensor_system",
+    title: "Hydrogen / Methane Separation & Sensing System",
+    cover: sensorCover,
+    keywords: [
+      "design of experiments (DoE)",
+      "prototyping",
+      "control & sensor systems",
+      "data analysis",
+      "patent development"
+    ],
     date: "2023–2024",
     location: "Calgary, AB",
-    affiliate: "MEDAL Lab",
-    description:
-      "Prototype integrating gas sensing, DAQ, and packaging supporting patent-oriented work.",
-    images: [
-      "https://picsum.photos/900/600?random=151",
-      "https://picsum.photos/900/600?random=152",
+    affiliate: "Multifunctional Engineering Dynamics Automation Lab (MEDAL)",
+    description: [
+      "This project was completed during my summer research experience at MEDAL, where I was given the opportunity to lead an early-stage research project related to hydrogen and methane separation.",
+
+      "My work focused on supporting the experimental foundation of the project by developing and organizing the sensing, pressure-control, and data-acquisition workflow. The project required a reliable way to monitor gas composition, pressure conditions, and system response during testing. I designed the experimental setup, hydrogen sensor configuration, pump control system, pressure control system, particle sensing setup, and data acquisition tools to help build a more measurable and repeatable testing process. I also designed and procured components from local and international manufacturers. During this process, I considered material specifications and manufacturability to ensure they suited the project requirements.",
+
+      "A major part of my contribution was connecting individual lab components into a working experimental system. This included setting up sensor circuits, exploring LabVIEW and manufacturer software for data acquisition, reviewing signal responsiveness, using Arduino-based sensing, and testing pump behaviour under controlled pressure conditions. I organized the system-level workflow so that future experiments could be conducted with clearer monitoring and control.",
+
+      "This project contributed to patent formulation. Through this experience, I learned how research ideas are developed, funded, and translated into potential industry applications. Designing the experimental setup was also a crucial experience that helped me understand how product and system development work in a research environment."
     ],
-  },
+    images: [
+      sensorImg02,
+      sensorImg03,
+      sensorImg04,
+      sensorImg05,
+      sensorImg06,
+      sensorImg07,
+      sensorImg08,
+      sensorImg09,
+      sensorImg10,
+      sensorImg11,
+      sensorImg12,
+      sensorImg13
+    ]
+  }
 ];
+
 
 const Projects = () => {
   const [open, setOpen] = useState(null);

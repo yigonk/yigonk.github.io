@@ -322,10 +322,19 @@
   margin: 0 0 10px;
 }
 
+.about__text .about__title {
+  margin-left: 0;
+}
+
 .about__p {
   margin: 0;
+  padding: 0 1.5rem;
   color: var(--ink);
-  text-wrap: balance;
+  text-wrap: normal;
+}
+
+.about__text .about__p + .about__p {
+  margin-top: 1.5rem;
 }
 
 .about__media {
@@ -567,8 +576,13 @@
 }
 
 .modal__desc {
-  margin: 0 0 12px;
-  color: #0f172a;
+  margin: 0 0 1rem;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.modal__desc:last-child {
+  margin-bottom: 0;
 }
 
 .modal__gallery {
@@ -809,10 +823,14 @@
 }
 
 .exp__story {
-  margin: 0;
+  margin: 0 0 1.5rem;
   color: var(--ink);
   line-height: 1.65;
   max-width: 60ch;
+}
+
+.exp__story:last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 820px) {

@@ -15,7 +15,7 @@ const Photo = () => {
         <h2>Photo</h2>
         <p>
           Photography gallery coming soon. This will showcase travel, lifestyle,
-          and engineering shots.
+          and engineering-related shots.
         </p>
       </section>
     </div>

@@ -38,10 +38,7 @@ const Hero = () => {
   }, []);
 
   const hashtags = [
-    "# Mechanical Engineering",
-    "# Transformational leadership",
-    "# Digital integration",
-    "# Innovative Design",
+    "# Mechanical Engineer-In-Training (EIT)",
   ];
 
   return (
@@ -85,7 +82,7 @@ const Hero = () => {
             "--titleGap": "8px",
           }}
         >
-          <span className="line">Hello</span>
+          <span className="line">Hello!</span>
           <span className="line">I&apos;m Yigon</span>
         </h1>
         <ul className="hero__hashtags" aria-label="Personal descriptors">
