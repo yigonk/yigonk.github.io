@@ -36,6 +36,11 @@ import uavImg08 from "../assets/images/projects/uav/uav_08.JPG";
 import uavImg09 from "../assets/images/projects/uav/uav_09.JPG";
 import uavImg10 from "../assets/images/projects/uav/uav_10.JPG";
 import uavImg11 from "../assets/images/projects/uav/uav_11.JPG";
+import uavImg12 from "../assets/images/projects/uav/uav_12.png";
+import uavImg13 from "../assets/images/projects/uav/uav_13.png";
+import uavImg14 from "../assets/images/projects/uav/uav_14.png";
+import uavImg15 from "../assets/images/projects/uav/uav_15.png";
+import uavImg16 from "../assets/images/projects/uav/uav_16.png";
 import cansatCover from "../assets/images/projects/cansat/cansat_01.png";
 import cansatImg02 from "../assets/images/projects/cansat/cansat_02.png";
 import cansatImg03 from "../assets/images/projects/cansat/cansat_03.jpg";
@@ -45,6 +50,24 @@ import cansatImg06 from "../assets/images/projects/cansat/cansat_06.jpg";
 import cansatImg07 from "../assets/images/projects/cansat/cansat_07.jpg";
 import cansatImg08 from "../assets/images/projects/cansat/cansat_08.JPG";
 import cansatImg09 from "../assets/images/projects/cansat/cansat_09.JPG";
+import sensorCover from "../assets/images/projects/sensor_system/sensor_system_01.png";
+import sensorImg02 from "../assets/images/projects/sensor_system/sensor_system_02.png";
+import sensorImg03 from "../assets/images/projects/sensor_system/sensor_system_03.png";
+import sensorImg04 from "../assets/images/projects/sensor_system/sensor_system_04.png";
+import sensorImg05 from "../assets/images/projects/sensor_system/sensor_system_05.png";
+import sensorImg06 from "../assets/images/projects/sensor_system/sensor_system_06.png";
+import sensorImg07 from "../assets/images/projects/sensor_system/sensor_system_07.png";
+import sensorImg08 from "../assets/images/projects/sensor_system/sensor_system_08.png";
+import sensorImg09 from "../assets/images/projects/sensor_system/sensor_system_09.png";
+import sensorImg10 from "../assets/images/projects/sensor_system/sensor_system_10.png";
+import sensorImg11 from "../assets/images/projects/sensor_system/sensor_system_11.png";
+import sensorImg12 from "../assets/images/projects/sensor_system/sensor_system_12.png";
+import sensorImg13 from "../assets/images/projects/sensor_system/sensor_system_13.png";
+import iesveCover from "../assets/images/projects/iesve_manual/iesve_manual_01.png";
+import iesveImg02 from "../assets/images/projects/iesve_manual/iesve_manual_02.png";
+import iesveImg03 from "../assets/images/projects/iesve_manual/iesve_manual_03.png";
+import iesveImg04 from "../assets/images/projects/iesve_manual/iesve_manual_04.png";
+import iesveImg05 from "../assets/images/projects/iesve_manual/iesve_manual_05.png";
 
 const ITEMS = [
   // ────────────────────────────────────────────────
@@ -245,7 +268,7 @@ const ITEMS = [
   {
     id: "iesve_manual",
     title: "IES VE Workflow & Training System",
-    cover: "https://picsum.photos/1200/520?random=13",
+    cover: iesveCover,
     keywords: [
       "digital transformation",
       "workflow standardization",
@@ -262,7 +285,12 @@ const ITEMS = [
 
       "The goal of the document was to improve onboarding, reduce confusion, and create more consistent workflows across the team. Through this project, I learned how important clear documentation is in a professional engineering environment."
     ],
-    images: ["https://picsum.photos/900/600?random=131"]
+    images: [
+      iesveImg02,
+      iesveImg03,
+      iesveImg04,
+      iesveImg05
+    ]
   },
 
   // ────────────────────────────────────────────────
@@ -303,7 +331,12 @@ const ITEMS = [
       uavImg08,
       uavImg09,
       uavImg10,
-      uavImg11
+      uavImg11,
+      uavImg12,
+      uavImg13,
+      uavImg14,
+      uavImg15,
+      uavImg16
     ]
   },
 
@@ -313,7 +346,7 @@ const ITEMS = [
   {
     id: "sensor_system",
     title: "Hydrogen / Methane Separation & Sensing System",
-    cover: "https://picsum.photos/1200/520?random=15",
+    cover: sensorCover,
     keywords: [
       "design of experiments (DoE)",
       "prototyping",
@@ -334,8 +367,18 @@ const ITEMS = [
       "This project contributed to patent formulation. Through this experience, I learned how research ideas are developed, funded, and translated into potential industry applications. Designing the experimental setup was also a crucial experience that helped me understand how product and system development work in a research environment."
     ],
     images: [
-      "https://picsum.photos/900/600?random=151",
-      "https://picsum.photos/900/600?random=152"
+      sensorImg02,
+      sensorImg03,
+      sensorImg04,
+      sensorImg05,
+      sensorImg06,
+      sensorImg07,
+      sensorImg08,
+      sensorImg09,
+      sensorImg10,
+      sensorImg11,
+      sensorImg12,
+      sensorImg13
     ]
   }
 ];
